@@ -1,0 +1,22 @@
+@media (prefers-reduced-motion) {
+  .animated {
+    -webkit-animation-duration: inherit !important;
+    -webkit-animation-fill-mode: both !important;
+    animation-duration: inherit !important;
+    animation-fill-mode: both !important;
+    -webkit-animation: inherit !important;
+    -webkit-transition: inherit !important;
+    animation: inherit !important;
+    transition: inherit !important;
+  }
+}
+.animated {
+  -webkit-animation-duration: inherit !important;
+  -webkit-animation-fill-mode: both !important;
+  animation-duration: inherit !important;
+  animation-fill-mode: both !important;
+  -webkit-animation: inherit !important;
+  -webkit-transition: inherit !important;
+  animation: inherit !important;
+  transition: inherit !important;
+}
