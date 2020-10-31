@@ -1,0 +1,22 @@
+@import './styles/index.scss';
+
+.js-category-plp {
+  display: none;
+}
+
+#root {
+  .app_uplay & {
+    background: #1b2025;
+  }
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+  font-family: $ubiBold;
+}
+
+h1 {
+  padding: 0;
+}
