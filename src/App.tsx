@@ -1,15 +1,21 @@
 import React, { useEffect } from 'react';
-import './App.scss';
 import data from './data/content.json';
 import { ContentProvider } from './context/ContentProvider';
 import { IContent } from './types';
-import './App.scss';
 import { connect, ConnectedProps } from 'react-redux';
 import { AppDispatch } from './store';
 import { bindActionCreators } from 'redux';
 import { fetchAppSetup } from './store/features/app/app';
 
-import Content from './components/Content';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
+import Header from './components/Header';
+import About from './components/About';
+import Music from './components/Music';
 
 const mapDisPatchToProps = (dispatch: AppDispatch) => ({
   fetchAppSetup: bindActionCreators(fetchAppSetup, dispatch)
@@ -30,10 +36,24 @@ const App = ({ localeId, fetchAppSetup }: AppProps) => {
   useEffect(() => {
     fetchAppSetup();
   }, []);
+
   return (
-    <main id="application-id">
+    <main>
       <ContentProvider value={localizedContent}>
-        <Content />
+        <Router>
+          <Header />
+          <Switch>
+            <Route path="/" exact>
+              <About />
+            </Route>
+            <Route path="/music">
+              <Music />
+            </Route>
+            <Route path="*">
+              <About />
+            </Route>
+          </Switch>
+        </Router>
       </ContentProvider>
     </main>
   );

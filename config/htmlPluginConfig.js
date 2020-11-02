@@ -2,10 +2,6 @@ const path = require('path');
 const templatePath = path.resolve(__dirname + '/../public/index.html');
 
 module.exports = function getHtmlWebpackPluginConfig(env, lang) {
-  const ubisoftEnv = process.env.REACT_APP_ENV;
-  if (env === 'development') {
-    console.log('ubisoft env: ', ubisoftEnv);
-  }
   const filename = `${lang}/index.html`;
 
   return Object.assign(
@@ -23,8 +19,7 @@ module.exports = function getHtmlWebpackPluginConfig(env, lang) {
             files: assets,
             options
           },
-          locale: lang,
-          ubisoftEnv: ubisoftEnv
+          locale: lang
         };
       }
     },

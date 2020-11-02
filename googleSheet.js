@@ -6,6 +6,7 @@ const flat = require("flat");
 const _ = require("lodash");
 
 const spreadsheetId = "1CSMooOrXYYRO4blCMnCLDiak34DplvGy6TG_GJAuKsM";
+const spreadsheetTabs = ['config', 'about', 'mroyal', 'social'];
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
@@ -86,14 +87,13 @@ function getNewToken(oAuth2Client, callback) {
  */
 function createJSONFromSpreadsheet(auth) {
   const sheets = google.sheets({ version: 'v4', auth });
-  const requiredSheets = ['config', 'social']
   const range = '!A1:B';
 
   try {
     sheets.spreadsheets.values.batchGet(
       {
         spreadsheetId,
-        ranges: requiredSheets.map(sheet => sheet + range)
+        ranges: spreadsheetTabs.map(sheet => sheet + range)
       },
       (err, res) => {
         const results = convertResponse(res.data);
