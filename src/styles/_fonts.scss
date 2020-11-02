@@ -1,0 +1,55 @@
+// @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+@font-face {
+  font-family: $fontSecondary;
+  src: url('/fonts/longjohnson.woff2') format('woff2'),
+        url('/fonts/longjohnson.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+p {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  color: $white;
+  max-width: 100rem;
+  margin: 0 0 1.5rem;
+
+  @include minDevice($minTablet) {
+    font-size: 1.8rem;
+  }
+  &.small {
+    margin: 0 auto 1.5rem;
+    max-width: 80rem;
+    font-size: 1.2rem;
+    color: $turquoise;
+  }
+}
+
+h1 {
+  font-size: 5rem;
+  color: $firefly;
+  text-transform: uppercase;
+  font-family: $fontSecondary;
+  letter-spacing: 6px;
+  margin: 0 0 5rem;
+  text-shadow:
+    -1px -1px 0 $turquoise,  
+    1px -1px 0 $turquoise,
+    -1px 1px 0 $turquoise,
+    1px 1px 0 $turquoise;
+    position: relative;
+
+  &::before {
+    content: attr(title);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+  }
+}

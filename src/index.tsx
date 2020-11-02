@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
 import App from './App';
 import store from './store';
 import { Provider } from 'react-redux';
+import './styles/index.scss';
 
 const root = document.getElementById('root');
 const localeId = root.getAttribute('data-locale');

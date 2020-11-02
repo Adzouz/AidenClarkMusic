@@ -82,6 +82,12 @@ function generatePrerenderSPAPlugins() {
         }
       }),
       postProcess(context) {
+        context.route = context.originalRoute;
+        
+        if (context.route.endsWith('.html')) {
+          context.outputPath = path.join(__dirname, 'dist', context.route);
+        }
+
         console.log(
           'Post processing HTML: ',
           context.originalRoute.toUpperCase()
