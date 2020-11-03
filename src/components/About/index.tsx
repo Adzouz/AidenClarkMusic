@@ -28,7 +28,7 @@ const About = ({ context }: IContentProps) => {
   });
   return (
     <div className="about">
-      <h1 title="About" dangerouslySetInnerHTML={{ __html: about.title }} />
+      <h1 title={about.title} dangerouslySetInnerHTML={{ __html: about.title }} />
       <div className="description">
         <div dangerouslySetInnerHTML={{ __html: about.about.description }}></div>
         <ul className="photos">

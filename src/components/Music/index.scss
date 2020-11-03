@@ -1,0 +1,141 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.music {
+  &.shrink {
+    h1 {
+      display: none;
+    }
+    .releases-list-container {
+      padding: 1rem 0;
+      min-height: auto;
+      border-color: $turquoise;
+
+      .releases-list {
+        li {
+          padding: 1rem;
+          max-width: 10%;
+
+          a {
+            background-color: $firefly;
+
+            &:not(.active) {
+              &:hover {
+                > * {
+                  opacity: 1;
+                }
+              }
+              > * {
+                opacity: 0.7;
+              }
+            }
+            &:hover {
+              span.release-cover {
+                box-shadow: 0 0 1rem $turquoise;
+              }
+            }
+            span.release-title,
+            span.release-date {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  .releases-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 3rem;
+    min-height: calc(100vh - 5.5rem);
+    border-bottom: 1px solid transparent;
+    transition: .2s border-color ease-in-out;
+    background-image: url(../../assets/music-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: 50% 50%;
+    position: relative;
+
+    @include minDevice($minTablet) {
+      background-size: cover;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: $firefly;
+      opacity: 0.8;
+      z-index: 1;
+    }
+    h1,
+    .releases-list{
+      position: relative;
+      z-index: 2;
+    }
+    .releases-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      li {
+        transition: .2s all ease-in-out;
+        flex: 0 0 100%;
+        max-width: 40rem;
+        padding: 2rem;
+
+        @include minDevice($minTablet) {
+          max-width: 33.333%;
+        }
+        @include minDevice($minLargeTablet) {
+          max-width: 20%;
+        }
+        a {
+          transition: .2s all ease-in-out;
+          display: block;
+          text-decoration: none;
+
+          &:hover {
+            transform: scale(1.02);
+
+            span.release-cover {
+              box-shadow: 0 0 2rem $turquoise;
+            }
+          }
+          span {
+            display: block;
+          }
+          span.release-cover {
+            transition: .2s all ease-in-out;
+
+            img {
+              display: block;
+              width: 100%;
+            }
+          }
+          span.release-title,
+          span.release-date {
+            margin-top: 1rem;
+            line-height: 1.5;
+          }
+          span.release-title {
+            color: $white;
+            font-size: 1.4rem;
+          }
+          span.release-date {
+            color: $turquoise;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
