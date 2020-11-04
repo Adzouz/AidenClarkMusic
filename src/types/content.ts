@@ -2,13 +2,10 @@ export default interface IContent {
   [key: string]: any;
   config: IConfigTab;
   about: IAboutTab;
-  mroyal: IMRoyalTab;
   social: ISocialTab;
-}
-
-export interface ILink {
-  title: string;
-  url: string;
+  music: IMusicTab;
+  mroyal: IMusicItemTab;
+  keepcontrol: IMusicItemTab;
 }
 
 export interface IConfigTab {
@@ -29,7 +26,23 @@ export interface IAboutTab {
   }
 }
 
-export interface IMRoyalTab {
+export interface IMusicTab {
+  title?: string;
+  releases?: {
+    tab: string;
+    slug: string;
+  }[]
+}
+
+export interface IMusicItemTab {
+  title?: string;
+  type?: string;
+  cover?: string;
+  background?: {
+    image?: string;
+    video?: string;
+  };
+  release_date?: string;
   listen?: {
     description?: string;
     links?: ILink[]
@@ -38,8 +51,23 @@ export interface IMRoyalTab {
     description?: string;
     links?: ILink[]
   }
+  youtube_video?: string;
+  tracks?: {
+    name?: string;
+  }[]
+  credits?: ICreditsItem[];
+}
+
+export interface ICreditsItem {
+  title?: string;
+  description?: string;
 }
 
 export interface ISocialTab {
-  links?: ILink[];
+  links: ILink[];
+}
+
+export interface ILink {
+  title?: string;
+  url?: string;
 }

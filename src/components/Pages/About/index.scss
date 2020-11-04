@@ -1,14 +1,14 @@
-@import '../../styles/variables.scss';
-@import '../../styles/mixins.scss';
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
 
 .about {
-  padding: 5rem 3rem;
+  padding: 6rem 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 5.5rem);
-  background-image: url(../../assets/about-bg.jpg);
+  min-height: calc(100vh - 6rem);
+  background-image: url(../../../assets/about-bg.jpg);
   background-repeat: no-repeat;
   background-size: 200% auto;
   background-position: 50% 0;
@@ -17,6 +17,7 @@
 
   @include minDevice($minTablet) {
     background-size: cover;
+    padding: 10rem 3rem;
   }
   &::before {
     content: "";
@@ -42,7 +43,7 @@
       padding: 1.5rem 0 0;
       max-width: 30rem;
       margin: 0 auto;
-  
+
       @include minDevice($minTablet) {
         display: flex;
         max-width: 100rem;
@@ -50,7 +51,7 @@
       li {
         padding: 1rem;
         flex: 0 0 33.333%;
-  
+
         @include minDevice($minTablet) {
           padding: 2rem;
         }

@@ -1,0 +1,138 @@
+@import '../../../../styles/variables.scss';
+@import '../../../../styles/mixins.scss';
+
+.release-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  background-size: cover;
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  padding: 10rem 3rem;
+  overflow: hidden;
+  text-align: center;
+
+  .video-container {
+    display: none;
+    width: 100%;
+    height: 0;
+    padding-top: 56.25%;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+
+    @include minDevice($minLargeTablet) {
+      display: block;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        height: 1000vh;
+        background-color: $firefly;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        top: calc(100% - 20vh);
+        left: 0;
+        right: 0;
+        height: 20vh;
+        background: linear-gradient(180deg, rgba(8,33,33,0) 0%, rgba(8,33,33,1) 80%);
+        z-index: 1;
+      }
+    }
+    iframe {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $firefly;
+    opacity: 0.7;
+    z-index: 1;
+  }
+  > * {
+    position: relative;
+    z-index: 3;
+
+    &:not(:last-child):not(.video-container) {
+      margin-bottom: 3rem;
+
+      @include minDevice($minTablet) {
+        margin-bottom: 5rem;
+      }
+    }
+  }
+  .title,
+  .logo {
+    img {
+      display: block;
+      max-width: 80%;
+      margin: auto;
+
+      @include minDevice($minTablet) {
+        max-width: inherit;
+      }
+    }
+  }
+  .info {
+    .buy {
+      margin-top: 3rem;
+    }
+  }
+  .additional-info {
+    width: 100%;
+    max-width: 60rem;
+
+    .release-date {
+      color: $white;
+
+      span {
+        color: $turquoise;
+      }
+    }
+    .credits {
+      .title {
+        color: $turquoise;
+        margin-top: 3rem;
+      }
+    }
+  }
+  .youtube-video-wrapper {
+    width: 100%;
+    max-width: 60rem;
+
+    .youtube-video {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

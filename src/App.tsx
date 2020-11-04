@@ -13,9 +13,9 @@ import {
   Route
 } from "react-router-dom";
 
-import Header from './components/Header';
-import About from './components/About';
-import Music from './components/Music';
+import Header from './components/Elements/Header';
+import About from './components/Pages/About';
+import Music from './components/Pages/Music';
 
 const mapDisPatchToProps = (dispatch: AppDispatch) => ({
   fetchAppSetup: bindActionCreators(fetchAppSetup, dispatch)
