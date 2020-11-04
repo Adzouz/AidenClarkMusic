@@ -1,6 +1,6 @@
 import React from 'react';
-import { withContent } from '../../hoc/withContext';
-import { IContent } from '../../types';
+import { withContent } from '../../../hoc/withContext';
+import { IContent } from '../../../types';
 import { Link, Switch, Route, useRouteMatch, useLocation } from 'react-router-dom';
 import './index.scss';
 
@@ -16,9 +16,8 @@ const Content = ({ context }: IContentProps) => {
   const { music } = context;
 
   const linksList = music.releases.map((item: { tab: string; slug: string; }, index: number) => {
-    // Fetch name
     const release = context[item.tab];
-    const coverImg = require(`../../assets/releases/${item.slug}/${release.cover}`);
+    const coverImg = require(`../../../assets/releases/${item.slug}/${release.cover}`);
     return (
       <li key={`music_${index}`}>
         <Link to={`${url}/${item.slug}`} className={location.pathname === `/music/${item.slug}` ? 'active' : ''}>

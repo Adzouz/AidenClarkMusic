@@ -1,5 +1,5 @@
-@import '../../../styles/variables.scss';
-@import '../../../styles/mixins.scss';
+@import '../../../../styles/variables.scss';
+@import '../../../../styles/mixins.scss';
 
 .release-item {
   display: flex;
@@ -11,8 +11,9 @@
   background-size: cover;
   background-position: 50% 0;
   background-repeat: no-repeat;
-  padding: 5rem 3rem;
+  padding: 10rem 3rem;
   overflow: hidden;
+  text-align: center;
 
   .video-container {
     display: none;
@@ -65,7 +66,7 @@
     right: 0;
     bottom: 0;
     background-color: $firefly;
-    opacity: 0.8;
+    opacity: 0.7;
     z-index: 1;
   }
   > * {
@@ -84,13 +85,35 @@
   .logo {
     img {
       display: block;
+      max-width: 80%;
+      margin: auto;
+
+      @include minDevice($minTablet) {
+        max-width: inherit;
+      }
     }
   }
-  .middle-content {
-    text-align: center;
-
+  .info {
     .buy {
       margin-top: 3rem;
+    }
+  }
+  .additional-info {
+    width: 100%;
+    max-width: 60rem;
+
+    .release-date {
+      color: $white;
+
+      span {
+        color: $turquoise;
+      }
+    }
+    .credits {
+      .title {
+        color: $turquoise;
+        margin-top: 3rem;
+      }
     }
   }
   .youtube-video-wrapper {
