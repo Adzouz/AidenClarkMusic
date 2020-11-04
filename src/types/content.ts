@@ -8,11 +8,6 @@ export default interface IContent {
   keepcontrol: IMusicItemTab;
 }
 
-export interface ILink {
-  title: string;
-  url: string;
-}
-
 export interface IConfigTab {
   title?: string;
 }
@@ -60,8 +55,19 @@ export interface IMusicItemTab {
   tracks?: {
     name?: string;
   }[]
+  credits?: ICreditsItem[];
+}
+
+export interface ICreditsItem {
+  title?: string;
+  description?: string;
 }
 
 export interface ISocialTab {
-  links?: ILink[];
+  links: ILink[];
+}
+
+export interface ILink {
+  title?: string;
+  url?: string;
 }
