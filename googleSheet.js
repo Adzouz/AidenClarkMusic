@@ -6,7 +6,7 @@ const flat = require("flat");
 const _ = require("lodash");
 
 const spreadsheetId = "1CSMooOrXYYRO4blCMnCLDiak34DplvGy6TG_GJAuKsM";
-const spreadsheetTabs = ['config', 'about', 'mroyal', 'social'];
+const spreadsheetTabs = ['config', 'about', 'social', 'music', 'mroyal', 'keepcontrol'];
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];

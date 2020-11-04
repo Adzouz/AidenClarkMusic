@@ -1,4 +1,3 @@
-// @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 @font-face {
@@ -13,12 +12,17 @@
   text-decoration: line-through;
 }
 
+.turquoise {
+  color: $turquoise;
+}
+
 p {
   font-size: 1.4rem;
   line-height: 1.8;
   color: $white;
   max-width: 100rem;
   margin: 0 0 1.5rem;
+  text-shadow: 0 0 1rem $turquoise;
 
   @include minDevice($minTablet) {
     font-size: 1.8rem;
@@ -32,24 +36,28 @@ p {
 }
 
 h1 {
-  font-size: 5rem;
+  font-size: 4.6rem;
   color: $firefly;
   text-transform: uppercase;
   font-family: $fontSecondary;
   letter-spacing: 6px;
   margin: 0 0 5rem;
   text-shadow:
-    -1px -1px 0 $turquoise,  
+    0 0 40rem $turquoise,
+    -1px -1px 0 $turquoise,
     1px -1px 0 $turquoise,
     -1px 1px 0 $turquoise,
     1px 1px 0 $turquoise;
     position: relative;
 
+  @include minDevice($minTablet) {
+    font-size: 6.6rem;
+  }
   &::before {
     content: attr(title);
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -45%);
+    transform: translate(-50%, -42%);
   }
 }
