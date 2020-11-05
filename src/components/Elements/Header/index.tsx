@@ -1,14 +1,8 @@
 import React from 'react';
-import { withContent } from '../../../hoc/withContext';
-import { IContent } from '../../../types';
 import { Link, useLocation } from 'react-router-dom';
 import './index.scss';
 
-interface IContentProps {
-  context?: IContent;
-}
-
-const Header = ({ context }: IContentProps) => {
+const Header = () => {
   const logoPath = require("../../../assets/logo.svg");
   const location = useLocation();
   return (
@@ -22,4 +16,4 @@ const Header = ({ context }: IContentProps) => {
   );
 };
 
-export default withContent(Header);
+export default Header;

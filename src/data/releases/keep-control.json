@@ -1,0 +1,56 @@
+{
+  "slug": "keep-control",
+  "title": "Dedhomiz - Keep Control (Aiden Clark Remix)",
+  "type": "remix",
+  "cover": "cover.jpg",
+  "background": {
+    "image": "bg.jpg",
+    "video": "https://player.vimeo.com/video/474887245?background=1&autoplay=1&loop=1&byline=0&title=0"
+  },
+  "release_date": "September 26, 2020",
+  "listen": {
+    "description": "Dedhomiz - Keep Control remixed by Aiden Clark is available on the following streaming platforms",
+    "links": [
+      {
+        "title": "YouTube",
+        "url": "https://www.youtube.com/watch?v=00Vw-QBCYh0"
+      },
+      {
+        "title": "SoundCloud",
+        "url": "https://soundcloud.com/aidenclark/dedhomiz-keep-control-aiden-clark-remix"
+      },
+      {
+        "title": "Audius",
+        "url": "https://audius.co/aidenclarkmusic/dedhomiz-keep-control-aiden-clark-remix-88576"
+      }
+    ]
+  },
+  "buy": {
+    "description": "You can also grab your copy<br />(for free or name your price)",
+    "links": [
+      {
+        "title": "Bandcamp",
+        "url": "https://aidenclark.bandcamp.com/track/dedhomiz-keep-control-aiden-clark-remix"
+      }
+    ]
+  },
+  "youtube_video": "https://www.youtube.com/embed/00Vw-QBCYh0",
+  "credits": [
+    {
+      "title": "Original song by",
+      "description": "Dedhomiz<br /><br /><div class=\"youtube-video-wrapper\"><div class=\"youtube-video\"><iframe src=\"https://www.youtube.com/embed/QD-aAjYOHkI\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen /></div></div>"
+    },
+    {
+      "title": "Remixed by",
+      "description": "Aiden Clark"
+    },
+    {
+      "title": "Mix:",
+      "description": "Aiden Clark"
+    },
+    {
+      "title": "Mastering:",
+      "description": "Enzo Gabert (Dedhomiz)"
+    }
+  ]
+}

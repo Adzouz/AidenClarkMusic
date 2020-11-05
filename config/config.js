@@ -1,65 +1,28 @@
+const htmlPublicPath = process.env.REACT_APP_HTML_PATH;
+
 module.exports = {
-  getRegex(publicPath) {
+  htmlPublicPath: htmlPublicPath,
+  getRegex() {
     return [
       {
-        regex: /(.*)(?=<div id\=\"root\")/,
-        output: ''
-      },
-      {
-        regex: /<div id\=\"root\"/,
-        output: `<link rel="stylesheet" href="${publicPath}/main.css?$staticlink$" /> <div id="root"`
-      },
-      {
-        regex: /<\/body><\/html>/,
-        output: ''
+        regex: /href\=\"\//g,
+        output: `href="${htmlPublicPath}/`
       },
       {
         regex: /src\=\"\//g,
-        output: `src="${publicPath}/`
+        output: `src="${htmlPublicPath}/`
       },
       {
         regex: /srcset\=\"\//g,
-        output: `srcset="${publicPath}/`
+        output: `srcset="${htmlPublicPath}/`
       },
       {
         regex: /data-image\=\"\//g,
-        output: `data-image="${publicPath}/`
+        output: `data-image="${htmlPublicPath}/`
       },
       {
         regex: /background-image: url\(&quot;/g,
-        output: `background-image: url(&quot;${publicPath}/`
-      },
-      {
-        regex: /app\.js/,
-        output: `app.js?$staticlink$`
-      },
-      {
-        regex: /\.jpg/g,
-        output: '.jpg?$staticlink$'
-      },
-      {
-        regex: /\.jpeg/g,
-        output: '.jpeg?$staticlink$'
-      },
-      {
-        regex: /\.png/g,
-        output: '.png?$staticlink$'
-      },
-      {
-        regex: /\.svg/g,
-        output: '.svg?$staticlink$'
-      },
-      {
-        regex: /\.webm/g,
-        output: '.webm?$staticlink$'
-      },
-      {
-        regex: /\.webp/g,
-        output: '.webp?$staticlink$'
-      },
-      {
-        regex: /\.mp4/g,
-        output: '.mp4?$staticlink$'
+        output: `background-image: url(&quot;${htmlPublicPath}/`
       },
       {
         regex: /<!-- start script dev dependencies -->([\S\s]*?)<!-- end script dev dependencies -->/g,

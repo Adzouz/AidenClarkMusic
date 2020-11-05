@@ -1,27 +1,20 @@
 import React from 'react';
-import { withContent } from '../../../../hoc/withContext';
-import { IContent } from '../../../../types';
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
+import { ICreditsItem, IMusicItemTab } from '../../../../types';
 import './index.scss';
 
+import { releases } from '../../../../data';
 import SocialLinks from '../../../Elements/SocialLinks';
-import { ICreditsItem } from '../../../../types/content';
 
-interface IContentProps {
-  context?: IContent;
-}
-
-const Item = ({ context }: IContentProps) => {
+const Item = () => {
   const { releaseId } = useParams();
-  const { music } = context;
+  const releaseFound = releases.filter((item: IMusicItemTab) => item.slug === releaseId);
 
-  const releaseKey = music.releases.filter((item: { tab: string; slug: string; }) => item.slug === releaseId);
-
-  if (releaseKey.length !== 1) {
-    return null;
+  if (releaseFound.length !== 1) {
+    return <Redirect to="/" />;
   }
 
-  const currentItem = context[releaseKey[0].tab];
+  const currentItem = releaseFound[0];
   const { background, buy, credits, listen, release_date, youtube_video } = currentItem;
 
   const backgroundImg = require(`../../../../assets/releases/${releaseId}/${background.image}`);
@@ -29,7 +22,7 @@ const Item = ({ context }: IContentProps) => {
   const artistLogoImg = require(`../../../../assets/releases/${releaseId}/logo.png`);
 
   const creditsItems = credits.map((creditsItem: ICreditsItem, index: number) => (
-    <React.Fragment key={`credits_${releaseKey[0].tab}_${index}`}>
+    <React.Fragment key={`credits_${releaseId}_${index}`}>
       <p className="title" dangerouslySetInnerHTML={{ __html: creditsItem.title }} />
       <p dangerouslySetInnerHTML={{ __html: creditsItem.description }} />
     </React.Fragment>
@@ -49,13 +42,13 @@ const Item = ({ context }: IContentProps) => {
         <div className="listen">
           <p dangerouslySetInnerHTML={{ __html: listen.description }} />
           {listen.links && (
-            <SocialLinks links={listen.links} from={`listen_${releaseKey[0].tab}`} />
+            <SocialLinks links={listen.links} from={`listen_${releaseId}`} />
           )}
         </div>
         <div className="buy">
           <p dangerouslySetInnerHTML={{ __html: buy.description }} />
           {buy.links && (
-            <SocialLinks links={buy.links} from={`buy_${releaseKey[0].tab}`} />
+            <SocialLinks links={buy.links} from={`buy_${releaseId}`} />
           )}
         </div>
       </div>
@@ -79,4 +72,4 @@ const Item = ({ context }: IContentProps) => {
   );
 };
 
-export default withContent(Item);
+export default Item;
