@@ -1,9 +1,7 @@
 import React from 'react';
-import { ILink } from '../../../types/content';
-import { IContent } from '../../../types';
+import { ILink } from '../../../types';
 
 interface ISocialLinksProps {
-  context?: IContent;
   links: ILink[],
   from: string
 }

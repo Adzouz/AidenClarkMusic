@@ -1,17 +1,10 @@
 import React from 'react';
-import { withContent } from '../../../hoc/withContext';
-import { IContent } from '../../../types';
 import './index.scss';
 
+import { socialLinks as socialLinksData, aboutPage } from '../../../data';
 import SocialLinks from '../../Elements/SocialLinks';
 
-interface IContentProps {
-  context?: IContent;
-}
-
-const About = ({ context }: IContentProps) => {
-  const { about, social } = context;
-
+const About = () => {
   const photosPath = [
     require('../../../assets/photos/1.jpg'),
     require('../../../assets/photos/2.jpg'),
@@ -24,25 +17,23 @@ const About = ({ context }: IContentProps) => {
 
   return (
     <div className="about">
-      <h1 title={about.title} dangerouslySetInnerHTML={{ __html: about.title }} />
+      <h1 title={aboutPage.title}>{aboutPage.title}</h1>
       <div className="description">
-        <div dangerouslySetInnerHTML={{ __html: about.about.description }} />
+        <div dangerouslySetInnerHTML={{ __html: aboutPage.description }} />
         <ul className="photos">
           {photosList}
         </ul>
       </div>
       <div className="social">
-        <p dangerouslySetInnerHTML={{ __html: about.follow.title }} />
-        {social.links && (
-          <SocialLinks links={social.links} from="about" />
-        )}
+        <p dangerouslySetInnerHTML={{ __html: aboutPage.follow.title }} />
+        <SocialLinks links={socialLinksData} from="about" />
       </div>
       <div className="contact">
-        <p dangerouslySetInnerHTML={{ __html: about.contact.title }} />
-        <div dangerouslySetInnerHTML={{ __html: about.contact.description }} />
+        <p dangerouslySetInnerHTML={{ __html: aboutPage.contact.title }} />
+        <div dangerouslySetInnerHTML={{ __html: aboutPage.contact.description }} />
       </div>
     </div>
   );
 };
 
-export default withContent(About);
+export default About;

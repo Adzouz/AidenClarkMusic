@@ -1,30 +1,26 @@
 import React from 'react';
-import { withContent } from '../../../hoc/withContext';
-import { IContent } from '../../../types';
-import { Link, Switch, Route, useRouteMatch, useLocation } from 'react-router-dom';
+import { NavLink, Switch, Route, useLocation } from 'react-router-dom';
 import './index.scss';
 
+import { musicPage, releases } from '../../../data';
 import Item from './Item';
+import { IMusicItemTab } from '../../../types';
 
-interface IContentProps {
-  context?: IContent;
-}
-
-const Content = ({ context }: IContentProps) => {
-  let { path, url } = useRouteMatch();
+const Content = () => {
   const location = useLocation();
-  const { music } = context;
 
-  const linksList = music.releases.map((item: { tab: string; slug: string; }, index: number) => {
-    const release = context[item.tab];
-    const coverImg = require(`../../../assets/releases/${item.slug}/${release.cover}`);
+  const linksList = releases.map((item: IMusicItemTab, index: number) => {
+    const coverImg = require(`../../../assets/releases/${item.slug}/${item.cover}`);
     return (
       <li key={`music_${index}`}>
-        <Link to={`${url}/${item.slug}`} className={location.pathname === `/music/${item.slug}` ? 'active' : ''}>
-          <span className="release-cover"><img src={coverImg} alt={release.title} /></span>
-          <span className="release-title">{release.title}</span>
-          <span className="release-date">{release.release_date}</span>
-        </Link>
+        <NavLink
+          to={`/music/${item.slug}`}
+          activeClassName={'active'}
+        >
+          <span className="release-cover"><img src={coverImg} alt={item.title} /></span>
+          <span className="release-title">{item.title}</span>
+          <span className="release-date">{item.release_date}</span>
+        </NavLink>
       </li>
     );
   });
@@ -32,13 +28,13 @@ const Content = ({ context }: IContentProps) => {
   return (
     <div className={`music${location.pathname !== '/music' ? ' shrink' : ''}`}>
       <div className="releases-list-container">
-        <h1 title={music.title} dangerouslySetInnerHTML={{ __html: music.title }} />
+        <h1 title={musicPage.title} dangerouslySetInnerHTML={{ __html: musicPage.title }} />
         <ul className="releases-list">
           {linksList}
         </ul>
       </div>
       <Switch>
-        <Route path={`${path}/:releaseId`}>
+        <Route path={`/music/:releaseId`}>
           <Item />
         </Route>
       </Switch>
@@ -46,4 +42,4 @@ const Content = ({ context }: IContentProps) => {
   );
 };
 
-export default withContent(Content);
+export default Content;
