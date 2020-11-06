@@ -1,11 +1,8 @@
 const PrerenderSPAPlugin = require('prerender-spa-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const Renderer = PrerenderSPAPlugin.PuppeteerRenderer;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const htmlRegex = require('./config/config').getRegex();
 const getHtmlWebpackPluginConfig = require('./config/htmlPluginConfig');
 const path = require('path');
-const devLocale = process.env.REACT_APP_DEV_LOCALE;
 
 module.exports = (config, env) => {
   config.output.filename = 'app.js';
@@ -61,38 +58,13 @@ module.exports = (config, env) => {
 };
 
 function generateHTMLPlugins(env) {
-  return [new HtmlWebpackPlugin(getHtmlWebpackPluginConfig(env, devLocale))];
+  return [new HtmlWebpackPlugin(getHtmlWebpackPluginConfig(env))];
 }
 
 function generatePrerenderSPAPlugins() {
   const options = {
-    indexPath: path.join(__dirname, 'build', 'index.html'),
-    routes: [`/`, `/music`],
+    routes: ['/', '/music', '/music/m-royal', '/music/keep-control'],
     staticDir: path.join(__dirname, 'build'),
-    renderer: new Renderer({
-      injectProperty: '__PRERENDER_INJECTED',
-      inject: {
-        renderer: true
-      }
-    }),
-    postProcess(context) {
-      context.route = context.originalRoute;
-
-      if (context.route.endsWith('.html')) {
-        context.outputPath = path.join(__dirname, 'build', context.route);
-      }
-
-      console.log(
-        'Post processing HTML: ',
-        context.originalRoute
-      );
-
-      htmlRegex.forEach(element => {
-        context.html = context.html.replace(element.regex, element.output);
-      });
-
-      return context;
-    }
   };
 
   return [new PrerenderSPAPlugin(options)];
