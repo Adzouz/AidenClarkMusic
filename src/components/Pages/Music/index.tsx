@@ -2,18 +2,22 @@ import React, { useEffect } from 'react';
 import { NavLink, Switch, Route, useLocation } from 'react-router-dom';
 import './index.scss';
 
-import { musicPage, releases, config } from '../../../data';
-import Item from './Item';
+import { musicPage, releases } from '../../../data';
+import Release from './Release';
 import { IMusicItemTab } from '../../../types';
+import { updateMetas } from '../../../utils';
 
-const Content = () => {
+const MusicPage = () => {
   const location = useLocation();
+  const metas = {
+    title: ` - ${musicPage.title}`,
+    description: musicPage.meta_description,
+    path: location.pathname
+  };
 
   useEffect(() => {
     if (location.pathname === '/music') {
-      const pageTitle = config.title + " - " + musicPage.title;
-      document.title = pageTitle;
-      document.getElementById('og_title').setAttribute('content', pageTitle);
+      updateMetas(metas);
     }
   }, []);
 
@@ -43,11 +47,11 @@ const Content = () => {
       </div>
       <Switch>
         <Route path={`/music/:releaseId`}>
-          <Item />
+          <Release />
         </Route>
       </Switch>
     </div>
   );
 };
 
-export default Content;
+export default MusicPage;

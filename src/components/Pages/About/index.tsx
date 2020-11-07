@@ -1,14 +1,21 @@
 import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './index.scss';
 
-import { socialLinks as socialLinksData, aboutPage, config } from '../../../data';
+import { updateMetas } from '../../../utils';
+import { socialLinks as socialLinksData, aboutPage } from '../../../data';
 import SocialLinks from '../../Elements/SocialLinks';
 
-const About = () => {
+const AboutPage = () => {
+  const location = useLocation();
+  const metas = {
+    title: ` - ${aboutPage.title}`,
+    description: aboutPage.meta_description,
+    path: location.pathname
+  };
+
   useEffect(() => {
-    const pageTitle = config.title + " - " + aboutPage.title;
-    document.title = pageTitle;
-    document.getElementById('og_title').setAttribute('content', pageTitle);
+    updateMetas(metas);
   }, []);
 
   const photosPath = [
@@ -42,4 +49,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutPage;

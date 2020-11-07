@@ -17,24 +17,6 @@ module.exports = (config, env) => {
   config.plugins = htmlPlugins.concat(config.plugins);
 
   if (env === 'production') {
-    config.module.rules.forEach(rule => {
-      // console.log('rule: ', rule);
-      if (rule.hasOwnProperty('oneOf')) {
-        rule.oneOf[0].options.name = '[name].[ext]';
-        rule.oneOf[0].test.push(/\.svg$/);
-        rule.oneOf[0].options.limit = -1;
-        rule.oneOf[3].use[0].options.publicPath = './';
-        rule.oneOf[4].use[0].options.publicPath = './';
-        rule.oneOf[5].use[0].options.publicPath = './';
-        rule.oneOf[6].use[0].options.publicPath = './';
-        rule.oneOf[7].options.name = '[name].[ext]';
-      }
-    });
-
-    /**
-     * Add SCSS variable from Webpack config
-     */
-
     const prerenderSPAPlugins = generatePrerenderSPAPlugins();
     config.plugins = config.plugins.concat(prerenderSPAPlugins);
 
@@ -62,6 +44,7 @@ function generateHTMLPlugins(env) {
 }
 
 function generatePrerenderSPAPlugins() {
+  // @TODO dynamic releases
   const options = {
     routes: ['/', '/music', '/music/m-royal', '/music/keep-control'],
     staticDir: path.join(__dirname, 'build'),
