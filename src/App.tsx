@@ -16,17 +16,19 @@ const App = () => {
     <main>
       <Router>
         <Header />
-        <Switch>
-          <Route exact path="/">
-            <About />
-          </Route>
-          <Route path="/music">
-            <Music />
-          </Route>
-          <Route path="*">
-            <Redirect to={'/'} />
-          </Route>
-        </Switch>
+        <div className="content">
+          <Switch>
+            <Route exact path="/">
+              <About />
+            </Route>
+            <Route path="/music">
+              <Music />
+            </Route>
+            <Route path="*">
+              <Redirect to={'/'} />
+            </Route>
+          </Switch>
+        </div>
       </Router>
     </main>
   );

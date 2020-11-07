@@ -34,14 +34,13 @@ ul.links {
   max-width: 100rem;
 
   li {
-    padding: 1.5rem;
-
-    @include minDevice($minTablet) {
-      padding: 1rem 2rem;
-    }
     a {
       display: block;
+      padding: 1.5rem;
 
+      @include minDevice($minTablet) {
+        padding: 1rem 2rem;
+      }
       img {
         transition: .2s all ease-in-out;
         display: block;
@@ -59,4 +58,9 @@ ul.links {
       }
     }
   }
+}
+
+.content *:focus {
+  box-shadow: 0 0 2rem $turquoise;
+  outline: 0;
 }
