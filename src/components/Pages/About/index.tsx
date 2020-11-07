@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './index.scss';
 
-import { socialLinks as socialLinksData, aboutPage } from '../../../data';
+import { socialLinks as socialLinksData, aboutPage, config } from '../../../data';
 import SocialLinks from '../../Elements/SocialLinks';
 
 const About = () => {
+  useEffect(() => {
+    const pageTitle = config.title + " - " + aboutPage.title;
+    document.title = pageTitle;
+    document.getElementById('og_title').setAttribute('content', pageTitle);
+  }, []);
+
   const photosPath = [
     require('../../../assets/photos/1.jpg'),
     require('../../../assets/photos/2.jpg'),

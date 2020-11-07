@@ -39,6 +39,9 @@
                 opacity: 0.8;
               }
             }
+            &.active {
+              border: 1px solid $turquoise;
+            }
             &:hover {
               span.release-cover {
                 box-shadow: 0 0 1rem $turquoise;

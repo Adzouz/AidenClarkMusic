@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink, Switch, Route, useLocation } from 'react-router-dom';
 import './index.scss';
 
-import { musicPage, releases } from '../../../data';
+import { musicPage, releases, config } from '../../../data';
 import Item from './Item';
 import { IMusicItemTab } from '../../../types';
 
 const Content = () => {
   const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === '/music') {
+      const pageTitle = config.title + " - " + musicPage.title;
+      document.title = pageTitle;
+      document.getElementById('og_title').setAttribute('content', pageTitle);
+    }
+  }, []);
 
   const linksList = releases.map((item: IMusicItemTab, index: number) => {
     const coverImg = require(`../../../assets/releases/${item.slug}/${item.cover}`);
