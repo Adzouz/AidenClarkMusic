@@ -15,29 +15,6 @@
   overflow: hidden;
   text-align: center;
 
-  &.cinema {
-    > *:not(.youtube-video-container):not(.background-image) {
-      opacity: 0.1;
-    }
-    &::before {
-      opacity: 0.95;
-    }
-    .youtube-video-container {
-      max-width: 100rem;
-
-      .cinema-mode-trigger {
-        button {
-          background-color: $firefly;
-          color: $turquoise;
-          box-shadow: 0 0 1rem $turquoise;
-
-          &:focus {
-            box-shadow: 0 0 2rem $turquoise;
-          }
-        }
-      }
-    }
-  }
   .background-image,
   .video-container  {
     position: absolute;
@@ -126,61 +103,6 @@
   .info {
     .buy {
       margin-top: 3rem;
-    }
-  }
-  .additional-info {
-    width: 100%;
-    max-width: 60rem;
-
-    .release-date {
-      color: $white;
-
-      span {
-        color: $turquoise;
-      }
-    }
-    .credits {
-      .title {
-        color: $turquoise;
-        margin-top: 3rem;
-      }
-    }
-  }
-  .youtube-video-container {
-    width: 100%;
-    max-width: 60rem;
-    transition: .12s max-width ease-in-out;
-
-    .youtube-video-wrapper {
-      margin-bottom: 2rem;
-
-      .youtube-video {
-        position: relative;
-        width: 100%;
-        padding-bottom: 56.25%;
-        height: 0;
-
-        iframe {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-        }
-      }
-    }
-    .cinema-mode-trigger {
-      button {
-        display: inline-block;
-        cursor: pointer;
-        appearance: none;
-        font-family: $fontPrimary;
-        border: 0;
-        padding: 1rem 2rem;
-        font-size: 1.2rem;
-        background-color: $turquoise;
-        color: $white;
-      }
     }
   }
 }

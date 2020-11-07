@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Redirect } from 'react-router-dom';
-import { ICreditsItem, IMusicItemTab } from '../../../../types';
+import { useParams, useLocation, Redirect } from 'react-router-dom';
+import { IMusicItemTab } from '../../../../types';
 import './index.scss';
 
-import { config, releases } from '../../../../data';
+import { releases } from '../../../../data';
+import { updateMetas } from '../../../../utils';
 import SocialLinks from '../../../Elements/SocialLinks';
+import AdditionalInfo from '../../../Elements/Release/AdditionalInfo';
+import YoutubeVideo from '../../../Elements/Release/YoutubeVideo';
 
-const Item = () => {
+const Release = () => {
   const [cinemaMode, setCinemaMode] = useState<any>({});
   const { releaseId } = useParams();
+  const location = useLocation();
   const releaseFound = releases.filter((item: IMusicItemTab) => item.slug === releaseId);
 
   if (releaseFound.length !== 1) {
@@ -17,32 +21,25 @@ const Item = () => {
 
   const currentItem = releaseFound[0];
 
-  const updatePageTitle = () => {
-    const pageTitle = `${config.title} - Release - ${currentItem.title}`;
-    document.title = pageTitle;
-    document.getElementById('og_title').setAttribute('content', pageTitle);
+  const metas = {
+    title: ` - Release - ${currentItem.title}`,
+    description: currentItem.meta_description,
+    path: location.pathname
   };
 
   useEffect(() => {
-    updatePageTitle();
+    updateMetas(metas);
   }, []);
   useEffect(() => {
     setCinemaMode({});
-    updatePageTitle();
+    updateMetas(metas);
   }, [releaseId]);
 
-  const { background, buy, credits, listen, release_date, youtube_video } = currentItem;
+  const { background, buy, listen } = currentItem;
 
   const backgroundImg = require(`../../../../assets/releases/${releaseId}/${background.image}`);
   const titleImg = require(`../../../../assets/releases/${releaseId}/title.png`);
   const artistLogoImg = require(`../../../../assets/releases/${releaseId}/logo.png`);
-
-  const creditsItems = credits.map((creditsItem: ICreditsItem, index: number) => (
-    <React.Fragment key={`credits_${releaseId}_${index}`}>
-      <p className="title" dangerouslySetInnerHTML={{ __html: creditsItem.title }} />
-      <p dangerouslySetInnerHTML={{ __html: creditsItem.description }} />
-    </React.Fragment>
-  ));
 
   return (
     <div className={`release-item${cinemaMode[releaseId] ? ' cinema' : ''}`}>
@@ -71,24 +68,8 @@ const Item = () => {
           )}
         </div>
       </div>
-      {youtube_video && (
-        <div className="youtube-video-container">
-          <div className="youtube-video-wrapper">
-            <div className="youtube-video">
-              <iframe src={youtube_video} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
-            </div>
-          </div>
-          <div className="cinema-mode-trigger">
-            <button onClick={() => setCinemaMode({...cinemaMode, [releaseId]: !cinemaMode[releaseId] })}>{cinemaMode[releaseId] ? 'Disable' : 'Enable'} cinema mode</button>
-          </div>
-        </div>
-      )}
-      <div className="additional-info">
-        <p className="release-date small">Released on <span>{release_date}</span></p>
-        <div className="credits">
-          {creditsItems}
-        </div>
-      </div>
+      <YoutubeVideo cinemaMode={cinemaMode} setCinemaMode={setCinemaMode} release={currentItem} />
+      <AdditionalInfo release={currentItem} />
       <div className="logo">
         <img src={artistLogoImg} alt="Artist(s) Logo(s)" />
       </div>
@@ -96,4 +77,4 @@ const Item = () => {
   );
 };
 
-export default Item;
+export default Release;
