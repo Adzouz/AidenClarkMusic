@@ -1,0 +1,31 @@
+button,
+.button {
+  display: inline-block;
+  cursor: pointer;
+  appearance: none;
+  font-family: $fontPrimary;
+  border: 0;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background-color: $turquoise;
+  color: $white;
+  text-decoration: none;
+  animation: 5s infinite alternate ease-in-out buttonGlow;
+
+  &:focus {
+    box-shadow: 0 0 2rem $turquoise;
+    animation: none;
+  }
+}
+
+@keyframes buttonGlow {
+  0% {
+    box-shadow: 0 0 1rem $turquoise;
+  }
+  50% {
+    box-shadow: 0 0 2rem $turquoise;
+  }
+  100% {
+    box-shadow: 0 0 1rem $turquoise;
+  }
+}

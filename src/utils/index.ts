@@ -10,7 +10,7 @@ const baseSiteURL = 'https://aidenclarkmusic.com';
 
 export const updateMetas = ({ title, description, path }: IUpdateMetas) => {
   const pathParts = path.split('/');
-  const pageSlug = pathParts[pathParts.length - 1] || 'about';
+  const pageSlug = pathParts[pathParts.length - 1] || 'default';
 
   document.title = config.title + title;
 

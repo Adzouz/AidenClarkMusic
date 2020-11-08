@@ -9,6 +9,7 @@ import {
 
 import Header from './components/Elements/Header';
 import About from './components/Pages/About';
+import Home from './components/Pages/Home';
 import Music from './components/Pages/Music';
 
 const App = () => {
@@ -19,6 +20,9 @@ const App = () => {
         <div className="content">
           <Switch>
             <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/about">
               <About />
             </Route>
             <Route path="/music">
