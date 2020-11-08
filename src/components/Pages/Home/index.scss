@@ -1,0 +1,119 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.home {
+  .highlighted-release {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: $white;
+    text-align: center;
+
+    @include minDevice($minTablet) {
+      flex-direction: row;
+      text-align: left;
+    }
+    .release-cover {
+      display: flex;
+      margin-bottom: 3rem;
+      flex: 0 0 50%;
+
+      @include minDevice($minTablet) {
+        margin-bottom: 0;
+        margin-right: 5rem;
+      }
+      a {
+        display: inline-block;
+        border: 1px solid $turquoise;
+        box-shadow: 0 0 20rem $turquoise;
+        animation: 5s infinite alternate ease-in-out highlightedGlow;
+        margin-left: auto;
+
+        img {
+          display: block;
+          width: 100%;
+          max-width: 25rem;
+
+          @include minDevice($minTablet) {
+            max-width: 30rem;
+          }
+          @include minDevice($minLargeTablet) {
+            max-width: 40rem;
+          }
+        }
+      }
+    }
+    .info {
+      flex: 0 0 50%;
+
+      @include minDevice($minTablet) {
+        padding-right: 5rem;
+      }
+      .info-content {
+        max-width: 80rem;
+
+        h1,
+        .description,
+        .release-date {
+          line-height: 1.3;
+          margin-bottom: 3rem;
+        }
+        h1 {
+          img {
+            max-width: 18rem;
+
+            @include minDevice($minTablet) {
+              max-width: 20rem;
+            }
+            @include minDevice($minLargeTablet) {
+              max-width: 25rem;
+            }
+          }
+        }
+        .description {
+          font-size: 1.4rem;
+
+          @include minDevice($minTablet) {
+            font-size: 1.6rem;
+          }
+          @include minDevice($minLargeTablet) {
+            font-size: 2rem;
+          }
+        }
+        .release-date {
+          font-size: 1rem;
+
+          @include minDevice($minTablet) {
+            font-size: 1.4rem;
+          }
+          span {
+            color: $turquoise;
+          }
+        }
+        .actions {
+          a:not(:last-child) {
+            margin-bottom: 3rem;
+
+            @include minDevice($minTablet) {
+              margin-bottom: 2rem;
+              margin-right: 2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes highlightedGlow {
+  0% {
+    box-shadow: 0 0 10rem rgba($turquoise, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 20rem rgba($turquoise, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 10rem rgba($turquoise, 0.7);
+  }
+}

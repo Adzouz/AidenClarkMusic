@@ -8,6 +8,7 @@ import { updateMetas } from '../../../../utils';
 import SocialLinks from '../../../Elements/SocialLinks';
 import AdditionalInfo from '../../../Elements/Release/AdditionalInfo';
 import YoutubeVideo from '../../../Elements/Release/YoutubeVideo';
+import FullscreenBackground from '../../../Elements/FullscreenBackground';
 
 const Release = () => {
   const [cinemaMode, setCinemaMode] = useState<any>({});
@@ -43,36 +44,30 @@ const Release = () => {
 
   return (
     <div className={`release-item${cinemaMode[releaseId] ? ' cinema' : ''}`}>
-      <div className="background-image">
-        <img src={backgroundImg} alt="" />
-      </div>
-      {background.video && (
-        <div className="video-container">
-          <iframe src={background.video} frameBorder="0" allow="autoplay ; fullscreen" allowFullScreen />
+      <FullscreenBackground image={backgroundImg} video={background.video}>
+        <div className="title">
+          <img src={titleImg} alt={currentItem.title} />
         </div>
-      )}
-      <div className="title">
-        <img src={titleImg} alt={currentItem.title} />
-      </div>
-      <div className="info">
-        <div className="listen">
-          <p dangerouslySetInnerHTML={{ __html: listen.description }} />
-          {listen.links && (
-            <SocialLinks links={listen.links} from={`listen_${releaseId}`} />
-          )}
+        <div className="info">
+          <div className="listen">
+            <p dangerouslySetInnerHTML={{ __html: listen.description }} />
+            {listen.links && (
+              <SocialLinks links={listen.links} from={`listen_${releaseId}`} />
+            )}
+          </div>
+          <div className="buy">
+            <p dangerouslySetInnerHTML={{ __html: buy.description }} />
+            {buy.links && (
+              <SocialLinks links={buy.links} from={`buy_${releaseId}`} />
+            )}
+          </div>
         </div>
-        <div className="buy">
-          <p dangerouslySetInnerHTML={{ __html: buy.description }} />
-          {buy.links && (
-            <SocialLinks links={buy.links} from={`buy_${releaseId}`} />
-          )}
+        <YoutubeVideo cinemaMode={cinemaMode} setCinemaMode={setCinemaMode} release={currentItem} />
+        <AdditionalInfo release={currentItem} />
+        <div className="logo">
+          <img src={artistLogoImg} alt="Artist(s) Logo(s)" />
         </div>
-      </div>
-      <YoutubeVideo cinemaMode={cinemaMode} setCinemaMode={setCinemaMode} release={currentItem} />
-      <AdditionalInfo release={currentItem} />
-      <div className="logo">
-        <img src={artistLogoImg} alt="Artist(s) Logo(s)" />
-      </div>
+      </FullscreenBackground>
     </div>
   );
 };

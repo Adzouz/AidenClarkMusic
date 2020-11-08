@@ -35,7 +35,16 @@ p {
   }
 }
 
+.assistive-text {
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  overflow: hidden;
+  top: -1rem;
+}
+
 h1 {
+  display: inline-flex;
   font-size: 4.6rem;
   color: $firefly;
   text-transform: uppercase;
