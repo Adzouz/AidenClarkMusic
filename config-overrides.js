@@ -44,9 +44,8 @@ function generateHTMLPlugins(env) {
 }
 
 function generatePrerenderSPAPlugins() {
-  // @TODO dynamic releases
   const options = {
-    routes: ['/', '/music', '/music/m-royal', '/music/keep-control'],
+    routes: ['/', '/about', '/music', '/music/m-royal', '/music/keep-control'],
     staticDir: path.join(__dirname, 'build'),
   };
 
