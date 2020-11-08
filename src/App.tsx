@@ -1,42 +1,60 @@
 import React, { useEffect } from 'react';
-import './App.scss';
-import data from './data/content.json';
-import { ContentProvider } from './context/ContentProvider';
-import { IContent } from './types';
-import './App.scss';
-import { connect, ConnectedProps } from 'react-redux';
-import { AppDispatch } from './store';
-import { bindActionCreators } from 'redux';
-import { fetchAppSetup } from './store/features/app/app';
+import { Redirect } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import ReactGA from 'react-ga';
 
-import Content from './components/Content';
+import {
+  Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
-const mapDisPatchToProps = (dispatch: AppDispatch) => ({
-  fetchAppSetup: bindActionCreators(fetchAppSetup, dispatch)
+const history = createBrowserHistory();
+
+history.listen(location => {
+  if (process.env.NODE_ENV === "production") {
+    ReactGA.set({ page: location.pathname });
+    ReactGA.pageview(location.pathname);
+  }
 });
 
-const connector = connect(null, mapDisPatchToProps);
+import ScrollToTop from './components/Elements/ScrollToTop';
+import Header from './components/Elements/Header';
+import About from './components/Pages/About';
+import Home from './components/Pages/Home';
+import Music from './components/Pages/Music';
 
-type PropsFromRedux = ConnectedProps<typeof connector>;
-type AppProps = PropsFromRedux & {
-  localeId: string;
-};
-
-const App = ({ localeId, fetchAppSetup }: AppProps) => {
-  const localizedContent: IContent = data.filter(
-    locale => locale.lang === localeId
-  )[0];
-
+const App = () => {
   useEffect(() => {
-    fetchAppSetup();
+    if (process.env.NODE_ENV === "production") {
+      ReactGA.set({ page: location.pathname });
+      ReactGA.pageview(location.pathname);
+    }
   }, []);
   return (
-    <main id="application-id">
-      <ContentProvider value={localizedContent}>
-        <Content />
-      </ContentProvider>
+    <main>
+      <Router history={history}>
+        <ScrollToTop />
+        <Header />
+        <div className="content">
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/about">
+              <About />
+            </Route>
+            <Route path="/music">
+              <Music />
+            </Route>
+            <Route path="*">
+              <Redirect to={'/'} />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     </main>
   );
 };
 
-export default connector(App);
+export default App;

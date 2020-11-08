@@ -1,0 +1,85 @@
+ {
+  "slug": "m-royal",
+  "title": "M.ROYAL",
+  "type": "ep",
+  "cover": "cover.png",
+  "meta_description": "Listen to Aiden Clark's first EP: M.ROYAL. Available on all major streaming platforms.",
+  "background": {
+    "image": "bg.png",
+    "video": "https://player.vimeo.com/video/474459746?background=1&autoplay=1&loop=1&byline=0&title=0"
+  },
+  "release_date": "May 5, 2020",
+  "listen": {
+    "description": "Listen to Aiden Clark's first EP M.ROYAL on all streaming platforms",
+    "links": [
+      {
+        "title": "Spotify",
+        "url": "https://open.spotify.com/album/0ujdHteKCKJMDB3tsi8sNe?si=LEPvqcZnR-KNuHsXwJvvxw"
+      },
+      {
+        "title": "Deezer",
+        "url": "https://www.deezer.com/en/album/146200202"
+      },
+      {
+        "title": "YouTube",
+        "url": "https://www.youtube.com/watch?v=OlohI_tg62E&list=PL-wRlbFbE5lKBh3teaPYqrUP0LMwaPlnT"
+      },
+      {
+        "title": "YouTube Music",
+        "url": "https://music.youtube.com/channel/UCa9Ms_0uYrhNS2kfkNyrejQ"
+      },
+      {
+        "title": "Apple Music",
+        "url": "https://music.apple.com/ca/album/m-royal/1511921959?at=1001lbRT&ct=458410"
+      },
+      {
+        "title": "Amazon Music",
+        "url": "https://www.amazon.com/M-Royal-Aiden-Clark/dp/B0881ZBSLK/ref=sr_1_1?dchild=1&keywords=Aiden+Clark&qid=1589994923&s=dmusic&sr=1-1&tag=ton08-20"
+      },
+      {
+        "title": "SoundCloud",
+        "url": "https://soundcloud.com/aidenclark/sets/m-royal"
+      },
+      {
+        "title": "Audius",
+        "url": "https://audius.co/aidenclarkmusic/album/m.royal-7603"
+      },
+      {
+        "title": "Tidal",
+        "url": "https://tidal.com/browse/album/140187276"
+      }
+    ]
+  },
+  "buy": {
+    "description": "You also can buy it to support him!<br />(even if he doesn't deserve it)",
+    "links": [
+      {
+        "title": "Bandcamp",
+        "url": "https://aidenclark.bandcamp.com/album/m-royal"
+      },
+      {
+        "title": "Apple Music",
+        "url": "https://music.apple.com/us/album/m-royal/1511921959?uo=4&app=itunes&at=1001lbRT&ct=458410"
+      },
+      {
+        "title": "Amazon",
+        "url": "https://www.amazon.com/Aiden-Clark/dp/B0881ZBSLK?tag=ton08-20"
+      }
+    ]
+  },
+  "youtube_video": "https://www.youtube.com/embed/OlohI_tg62E?list=PL-wRlbFbE5lKBh3teaPYqrUP0LMwaPlnT",
+  "credits": [
+    {
+      "title": "Final mix/Mastering:",
+      "description": "Thomas Biadatti (She Died in a Parking Lot)"
+    },
+    {
+      "title": "Artwork:",
+      "description": "Aleksey Rico"
+    },
+    {
+      "title": "With the kind participation of:",
+      "description": "Maraudeur<br />SeYSMIC<br />She Died in a Parking Lot<br />Sam Hampell (YUL saxophone)"
+    }
+  ]
+}

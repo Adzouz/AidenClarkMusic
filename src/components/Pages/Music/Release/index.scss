@@ -1,0 +1,37 @@
+@import '../../../../styles/variables.scss';
+@import '../../../../styles/mixins.scss';
+
+.release-item {
+  width: 100%;
+  position: relative;
+  text-align: center;
+
+  .fullscreen-background {
+    > * {
+      &:not(:last-child):not(.video-container):not(.youtube-video-wrapper) {
+        margin-bottom: 3rem;
+
+        @include minDevice($minTablet) {
+          margin-bottom: 5rem;
+        }
+      }
+    }
+    .title,
+    .logo {
+      img {
+        display: block;
+        max-width: 80%;
+        margin: auto;
+
+        @include minDevice($minTablet) {
+          max-width: inherit;
+        }
+      }
+    }
+    .info {
+      .buy {
+        margin-top: 3rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+@import '../../../../styles/variables';
+
+.release-item {
+  .additional-info {
+    width: 100%;
+    max-width: 60rem;
+
+    .release-date {
+      color: $white;
+
+      span {
+        color: $turquoise;
+      }
+    }
+
+    .credits {
+      .title {
+        color: $turquoise;
+        margin-top: 3rem;
+      }
+    }
+  }
+}
