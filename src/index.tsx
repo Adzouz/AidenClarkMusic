@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReactGA from 'react-ga';
 import App from './App';
 import './styles/index.scss';
 
-import ReactGA from 'react-ga';
-ReactGA.initialize('G-SWQ7WWQ7W2');
-ReactGA.pageview(window.location.pathname + window.location.search);
+ReactGA.initialize('UA-181884461-1');
 
 const root = document.getElementById('root');
 

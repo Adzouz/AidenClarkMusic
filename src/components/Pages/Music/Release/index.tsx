@@ -52,13 +52,13 @@ const Release = () => {
           <div className="listen">
             <p dangerouslySetInnerHTML={{ __html: listen.description }} />
             {listen.links && (
-              <SocialLinks links={listen.links} from={`listen_${releaseId}`} />
+              <SocialLinks links={listen.links} from={`${currentItem.title} - Listen`} />
             )}
           </div>
           <div className="buy">
             <p dangerouslySetInnerHTML={{ __html: buy.description }} />
             {buy.links && (
-              <SocialLinks links={buy.links} from={`buy_${releaseId}`} />
+              <SocialLinks links={buy.links} from={`${currentItem.title} - Buy`} />
             )}
           </div>
         </div>

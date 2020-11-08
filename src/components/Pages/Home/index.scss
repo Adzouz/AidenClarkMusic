@@ -61,6 +61,7 @@
         }
         h1 {
           img {
+            display: block;
             max-width: 18rem;
 
             @include minDevice($minTablet) {
@@ -92,12 +93,16 @@
           }
         }
         .actions {
-          a:not(:last-child) {
-            margin-bottom: 3rem;
+          a {
+            margin: 1.5rem;
 
             @include minDevice($minTablet) {
-              margin-bottom: 2rem;
-              margin-right: 2rem;
+              margin: 0 0 2rem 0;
+            }
+          }
+          a:not(:last-child) {
+            @include minDevice($minTablet) {
+              margin: 0 2rem 2rem 0;
             }
           }
         }

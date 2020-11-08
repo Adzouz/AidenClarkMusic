@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import './index.scss';
 
-import { updateMetas } from '../../../utils';
+import { updateMetas, sendEvent } from '../../../utils';
 import { homePage, releases } from '../../../data';
 import { IMusicItemTab } from '../../../types';
 import FullscreenBackground from '../../Elements/FullscreenBackground';
@@ -51,9 +51,42 @@ const HomePage = () => {
               <div className="description">{meta_description}</div>
               <div className="release-date">Released on <span>{release_date}</span></div>
               <div className="actions">
-                <NavLink to={`/music/${slug}`} className="button more-info" title="What the f*ck is it?">More info</NavLink>
-                <NavLink to={`/music`} className="button more-info" title="How much the f*ck are they?">More releases</NavLink>
-                <NavLink to={`/about`} className="button more-info" title="Who the f*ck is he?">The artist</NavLink>
+                <NavLink
+                  to={`/music/${slug}`}
+                  className="button more-info"
+                  title="What the f*ck is it?"
+                  onClick={() => sendEvent({
+                    category: 'Homepage',
+                    action: 'Button click',
+                    label: 'More info'
+                  })}
+                >
+                  More info
+                </NavLink>
+                <NavLink
+                  to={`/music`}
+                  className="button more-info"
+                  title="How much the f*ck are they?"
+                  onClick={() => sendEvent({
+                    category: 'Homepage',
+                    action: 'Button click',
+                    label: 'More releases'
+                  })}
+                >
+                  More releases
+                </NavLink>
+                <NavLink
+                  to={`/about`}
+                  className="button more-info"
+                  title="Who the f*ck is he?"
+                  onClick={() => sendEvent({
+                    category: 'Homepage',
+                    action: 'Button click',
+                    label: 'The artist'
+                  })}
+                >
+                  The artist
+                </NavLink>
               </div>
             </div>
           </div>

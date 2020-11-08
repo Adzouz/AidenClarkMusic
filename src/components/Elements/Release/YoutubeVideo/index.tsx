@@ -1,5 +1,7 @@
 import React from 'react';
+import { sendEvent } from '../../../../utils';
 import './index.scss';
+
 import { IMusicItemTab } from '../../../../types';
 
 interface IYoutubeVideoProps {
@@ -9,6 +11,15 @@ interface IYoutubeVideoProps {
 }
 
 const YoutubeVideo = ({ cinemaMode, setCinemaMode, release }: IYoutubeVideoProps) => {
+  const toggleCinemaMode = () => {
+    const newValue = !cinemaMode[release.slug];
+    sendEvent({
+      category: 'Release',
+      action: 'Toggle cinema mode',
+      label: `${release.title} - ${newValue ? 'Enable' : 'Disable'}`
+    });
+    setCinemaMode({...cinemaMode, [release.slug]: newValue });
+  };
   return (
     <div className="youtube-video-container">
       <div className="youtube-video-wrapper">
@@ -17,7 +28,11 @@ const YoutubeVideo = ({ cinemaMode, setCinemaMode, release }: IYoutubeVideoProps
         </div>
       </div>
       <div className="cinema-mode-trigger">
-        <button onClick={() => setCinemaMode({...cinemaMode, [release.slug]: !cinemaMode[release.slug] })}>{cinemaMode[release.slug] ? 'Disable' : 'Enable'} cinema mode</button>
+        <button
+          onClick={() => toggleCinemaMode()}
+        >
+          {cinemaMode[release.slug] ? 'Disable' : 'Enable'} cinema mode
+        </button>
       </div>
     </div>
   );

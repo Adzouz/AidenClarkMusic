@@ -1,21 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import ReactGA from 'react-ga';
 
 import {
-  BrowserRouter as Router,
+  Router,
   Switch,
   Route
 } from "react-router-dom";
 
+const history = createBrowserHistory();
+
+history.listen(location => {
+  if (process.env.NODE_ENV === "production") {
+    ReactGA.set({ page: location.pathname });
+    ReactGA.pageview(location.pathname);
+  }
+});
+
+import ScrollToTop from './components/Elements/ScrollToTop';
 import Header from './components/Elements/Header';
 import About from './components/Pages/About';
 import Home from './components/Pages/Home';
 import Music from './components/Pages/Music';
 
 const App = () => {
+  useEffect(() => {
+    if (process.env.NODE_ENV === "production") {
+      ReactGA.set({ page: location.pathname });
+      ReactGA.pageview(location.pathname);
+    }
+  }, []);
   return (
     <main>
-      <Router>
+      <Router history={history}>
+        <ScrollToTop />
         <Header />
         <div className="content">
           <Switch>
