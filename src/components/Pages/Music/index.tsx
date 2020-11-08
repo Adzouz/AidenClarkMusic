@@ -5,7 +5,7 @@ import './index.scss';
 import { musicPage, releases } from '../../../data';
 import Release from './Release';
 import { IMusicItemTab } from '../../../types';
-import { updateMetas } from '../../../utils';
+import { updateMetas, sendEvent } from '../../../utils';
 
 const MusicPage = () => {
   const location = useLocation();
@@ -28,6 +28,11 @@ const MusicPage = () => {
         <NavLink
           to={`/music/${item.slug}`}
           activeClassName={'active'}
+          onClick={() => sendEvent({
+            category: `Music${location.pathname !== '/music' ? ' shrinked' : ''}`,
+            action: 'Release click',
+            label: item.title
+          })}
         >
           <span className="release-cover"><img src={coverImg} alt={item.title} /></span>
           <span className="release-title">{item.title}</span>

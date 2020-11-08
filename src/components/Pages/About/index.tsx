@@ -39,7 +39,7 @@ const AboutPage = () => {
       </div>
       <div className="social">
         <p dangerouslySetInnerHTML={{ __html: aboutPage.follow.title }} />
-        <SocialLinks links={socialLinksData} from="about" />
+        <SocialLinks links={socialLinksData} from="About" />
       </div>
       <div className="contact">
         <p dangerouslySetInnerHTML={{ __html: aboutPage.contact.title }} />
