@@ -1,5 +1,67 @@
 @import './variables';
-@import './upc-overide.scss';
-@import './flexbox';
-@import './animations.scss';
-@import './mixins.scss';
+@import './mixins';
+@import './fonts';
+@import './buttons';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $firefly;
+  font-family: $fontPrimary;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 2rem;
+  padding-top: 6rem;
+}
+
+ul.links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 100rem;
+
+  li {
+    a {
+      display: block;
+      padding: 1.5rem;
+
+      @include minDevice($minTablet) {
+        padding: 1rem 2rem;
+      }
+      img {
+        transition: .2s all ease-in-out;
+        display: block;
+        width: 100%;
+        max-width: 120px;
+
+        @include minDevice($minTablet) {
+          max-width: 150px;
+        }
+      }
+      &:hover {
+        img {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+}
+
+.content *:focus {
+  box-shadow: 0 0 2rem $turquoise;
+  outline: 0;
+}

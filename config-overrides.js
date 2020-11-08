@@ -1,11 +1,8 @@
 const PrerenderSPAPlugin = require('prerender-spa-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const Renderer = PrerenderSPAPlugin.PuppeteerRenderer;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const getHtmlWebpackPluginConfig = require('./config/htmlPluginConfig');
-const data = require('./src/data/content.json');
 const path = require('path');
-const devLocale = process.env.REACT_APP_DEV_LOCALE;
 
 module.exports = (config, env) => {
   config.output.filename = 'app.js';
@@ -20,22 +17,6 @@ module.exports = (config, env) => {
   config.plugins = htmlPlugins.concat(config.plugins);
 
   if (env === 'production') {
-    config.module.rules.forEach(rule => {
-      // console.log('rule: ', rule);
-      if (rule.hasOwnProperty('oneOf')) {
-        rule.oneOf[0].options.name = '[name].[ext]';
-        rule.oneOf[0].test.push(/\.svg$/);
-        rule.oneOf[3].use[0].options.publicPath = './';
-        rule.oneOf[4].use[0].options.publicPath = './';
-        rule.oneOf[5].use[0].options.publicPath = './';
-        rule.oneOf[6].use[0].options.publicPath = './';
-      }
-    });
-
-    /**
-     * Add SCSS variable from Webpack config
-     */
-
     const prerenderSPAPlugins = generatePrerenderSPAPlugins();
     config.plugins = config.plugins.concat(prerenderSPAPlugins);
 
@@ -59,38 +40,15 @@ module.exports = (config, env) => {
 };
 
 function generateHTMLPlugins(env) {
-  if (env === 'production') {
-    return data.map(locale => {
-      const config = getHtmlWebpackPluginConfig(env, locale.lang);
-      return new HtmlWebpackPlugin(config);
-    });
-  }
-
-  return [new HtmlWebpackPlugin(getHtmlWebpackPluginConfig(env, devLocale))];
+  return [new HtmlWebpackPlugin(getHtmlWebpackPluginConfig(env))];
 }
 
 function generatePrerenderSPAPlugins() {
-  return data.map(locale => {
-    const options = {
-      indexPath: path.join(__dirname, 'build', locale.lang, 'index.html'),
-      routes: ['/' + locale.lang],
-      staticDir: path.join(__dirname, 'build'),
-      renderer: new Renderer({
-        injectProperty: '__PRERENDER_INJECTED',
-        inject: {
-          renderer: true
-        }
-      }),
-      postProcess(context) {
-        console.log(
-          'Post processing HTML: ',
-          context.originalRoute.toUpperCase()
-        );
+  // @TODO dynamic releases
+  const options = {
+    routes: ['/', '/music', '/music/m-royal', '/music/keep-control'],
+    staticDir: path.join(__dirname, 'build'),
+  };
 
-        return context;
-      }
-    };
-
-    return new PrerenderSPAPlugin(options);
-  });
+  return [new PrerenderSPAPlugin(options)];
 }
