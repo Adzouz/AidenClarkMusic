@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, Switch, Route, useLocation } from 'react-router-dom';
 import './index.scss';
 
@@ -9,6 +9,7 @@ import { updateMetas, sendEvent } from '../../../utils';
 
 const MusicPage = () => {
   const location = useLocation();
+  const [releaseId, setReleaseId] = useState(null);
   const metas = {
     title: ` - ${musicPage.title}`,
     description: musicPage.meta_description,
@@ -29,7 +30,7 @@ const MusicPage = () => {
           to={`/music/${item.slug}`}
           activeClassName={'active'}
           onClick={() => sendEvent({
-            category: `Music${location.pathname !== '/music' ? ' shrinked' : ''}`,
+            category: `Music${releaseId ? ' shrinked' : ''}`,
             action: 'Release click',
             label: item.title
           })}
@@ -43,7 +44,7 @@ const MusicPage = () => {
   });
 
   return (
-    <div className={`music${location.pathname !== '/music' ? ' shrink' : ''}`}>
+    <div className={`music${releaseId ? ' shrink' : ''}`}>
       <div className="releases-list-container">
         <h1 title={musicPage.title} dangerouslySetInnerHTML={{ __html: musicPage.title }} />
         <ul className="releases-list">
@@ -52,7 +53,7 @@ const MusicPage = () => {
       </div>
       <Switch>
         <Route path={`/music/:releaseId`}>
-          <Release />
+          <Release setReleaseId={setReleaseId} />
         </Route>
       </Switch>
     </div>

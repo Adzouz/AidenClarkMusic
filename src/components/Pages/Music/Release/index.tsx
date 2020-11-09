@@ -10,7 +10,11 @@ import AdditionalInfo from '../../../Elements/Release/AdditionalInfo';
 import YoutubeVideo from '../../../Elements/Release/YoutubeVideo';
 import FullscreenBackground from '../../../Elements/FullscreenBackground';
 
-const Release = () => {
+interface IReleasePageProps {
+  setReleaseId: any;
+}
+
+const ReleasePage = ({ setReleaseId }: IReleasePageProps) => {
   const [cinemaMode, setCinemaMode] = useState<any>({});
   const { releaseId } = useParams();
   const location = useLocation();
@@ -31,10 +35,16 @@ const Release = () => {
 
   useEffect(() => {
     updateMetas(metas);
+    setReleaseId(releaseId);
+
+    return () => {
+      setReleaseId(null);
+    }
   }, []);
   useEffect(() => {
     setCinemaMode({});
     updateMetas(metas);
+    setReleaseId(releaseId);
   }, [releaseId]);
 
   const backgroundImg = require(`../../../../assets/releases/${releaseId}/${background.image}`);
@@ -71,4 +81,4 @@ const Release = () => {
   );
 };
 
-export default Release;
+export default ReleasePage;
