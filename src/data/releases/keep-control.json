@@ -6,7 +6,7 @@
   "meta_description": "Listen to Aiden Clark's first remix: Keep Control. Original song by Dedhomiz.",
   "background": {
     "image": "bg.jpg",
-    "video": "https://player.vimeo.com/video/474887245?background=1&autoplay=1&loop=1&byline=0&title=0"
+    "video": "https://player.vimeo.com/video/474887245?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
   },
   "release_date": "September 26, 2020",
   "listen": {
@@ -39,7 +39,7 @@
   "credits": [
     {
       "title": "Original song by",
-      "description": "Dedhomiz<br /><br /><div class=\"youtube-video-container\"><div class=\"youtube-video-wrapper\"><div class=\"youtube-video\"><iframe src=\"https://www.youtube.com/embed/QD-aAjYOHkI\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen /></div></div></div>"
+      "description": "Dedhomiz<br /><br /><div class=\"youtube-video-container\"><div class=\"youtube-video-wrapper\"><div class=\"youtube-video\"><iframe src=\"https://www.youtube.com/embed/QD-aAjYOHkI\" frameborder=\"0\" allow=\"accelerometer; autoplay; fullscreen; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" title=\"YouTube - Dedhomiz - Keep Control (Music Audio)\" /></div></div></div>"
     },
     {
       "title": "Remixed by",

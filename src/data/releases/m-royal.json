@@ -6,7 +6,7 @@
   "meta_description": "Listen to Aiden Clark's first EP: M.ROYAL. Available on all major streaming platforms.",
   "background": {
     "image": "bg.png",
-    "video": "https://player.vimeo.com/video/474459746?background=1&autoplay=1&loop=1&byline=0&title=0"
+    "video": "https://player.vimeo.com/video/474459746?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
   },
   "release_date": "May 5, 2020",
   "listen": {

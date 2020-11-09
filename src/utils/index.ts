@@ -29,7 +29,6 @@ interface ISendEventProps {
 }
 
 export const sendEvent = ({ category, action, label }: ISendEventProps) => {
-  console.log(category, action, label);
   if (process.env.NODE_ENV === 'production') {
     ReactGA.event({
       category,
