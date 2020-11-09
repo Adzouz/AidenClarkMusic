@@ -4,10 +4,11 @@ import './index.scss';
 interface IFullscreenBackgroundProps {
   image: string;
   video: string;
+  videoTitle: string;
   children: any;
 }
 
-const FullscreenBackground = ({ image, video, children }: IFullscreenBackgroundProps) => {
+const FullscreenBackground = ({ image, video, videoTitle, children }: IFullscreenBackgroundProps) => {
   return (
     <div className="fullscreen-background">
       <div className="background-image">
@@ -15,7 +16,7 @@ const FullscreenBackground = ({ image, video, children }: IFullscreenBackgroundP
       </div>
       {video && (
         <div className="video-container">
-          <iframe src={video} frameBorder="0" allow="autoplay ; fullscreen" allowFullScreen />
+          <iframe src={video} frameBorder="0" allow="autoplay; fullscreen" title={videoTitle} />
         </div>
       )}
       {children}

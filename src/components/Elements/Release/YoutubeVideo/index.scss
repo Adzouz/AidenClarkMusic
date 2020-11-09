@@ -50,5 +50,12 @@
         }
       }
     }
+    .cinema-mode-trigger {
+      display: none;
+
+      @include minDevice($minTablet) {
+        display: block;
+      }
+    }
   }
 }
