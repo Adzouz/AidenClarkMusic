@@ -1,6 +1,7 @@
 export interface IMusicItemTab {
   slug?: string;
   title?: string;
+  fulltitle?: string;
   type?: string;
   cover?: string;
   background?: {
