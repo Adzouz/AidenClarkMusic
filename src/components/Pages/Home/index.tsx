@@ -27,7 +27,7 @@ const HomePage = () => {
   }
 
   const highlightedRelease = releaseFound[0];
-  const { background, cover, meta_description, release_date, slug, title } = highlightedRelease;
+  const { background, cover, fulltitle, meta_description, release_date, slug, title } = highlightedRelease;
 
   const backgroundImg = require(`../../../assets/releases/${releaseId}/${background.image}`);
   const titleImg = require(`../../../assets/releases/${releaseId}/title.png`);
@@ -39,6 +39,7 @@ const HomePage = () => {
         <div className="highlighted-release">
           <div className="release-cover">
             <NavLink to={`/music/${slug}`}>
+              <span className="assistive-text">{fulltitle}</span>
               <img src={coverImg} alt={title} />
             </NavLink>
           </div>
@@ -61,7 +62,7 @@ const HomePage = () => {
                     label: 'More info'
                   })}
                 >
-                  More info
+                  More info<span className="assistive-text"> about {title}</span>
                 </NavLink>
                 <NavLink
                   to={`/music`}
