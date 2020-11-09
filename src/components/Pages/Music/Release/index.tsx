@@ -21,10 +21,11 @@ const Release = () => {
   }
 
   const currentItem = releaseFound[0];
+  const { background, buy, listen, meta_description, title } = currentItem;
 
   const metas = {
-    title: ` - Release - ${currentItem.title}`,
-    description: currentItem.meta_description,
+    title: ` - Release - ${title}`,
+    description: meta_description,
     path: location.pathname
   };
 
@@ -36,29 +37,27 @@ const Release = () => {
     updateMetas(metas);
   }, [releaseId]);
 
-  const { background, buy, listen } = currentItem;
-
   const backgroundImg = require(`../../../../assets/releases/${releaseId}/${background.image}`);
   const titleImg = require(`../../../../assets/releases/${releaseId}/title.png`);
   const artistLogoImg = require(`../../../../assets/releases/${releaseId}/logo.png`);
 
   return (
     <div className={`release-item${cinemaMode[releaseId] ? ' cinema' : ''}`}>
-      <FullscreenBackground image={backgroundImg} video={background.video}>
+      <FullscreenBackground image={backgroundImg} video={background.video} videoTitle={`Background video - Release - ${title}`}>
         <div className="title">
-          <img src={titleImg} alt={currentItem.title} />
+          <img src={titleImg} alt={title} />
         </div>
         <div className="info">
           <div className="listen">
             <p dangerouslySetInnerHTML={{ __html: listen.description }} />
             {listen.links && (
-              <SocialLinks links={listen.links} from={`${currentItem.title} - Listen`} />
+              <SocialLinks links={listen.links} from={`${title} - Listen`} />
             )}
           </div>
           <div className="buy">
             <p dangerouslySetInnerHTML={{ __html: buy.description }} />
             {buy.links && (
-              <SocialLinks links={buy.links} from={`${currentItem.title} - Buy`} />
+              <SocialLinks links={buy.links} from={`${title} - Buy`} />
             )}
           </div>
         </div>

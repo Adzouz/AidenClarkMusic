@@ -35,7 +35,7 @@ const HomePage = () => {
 
   return (
     <div className="home">
-      <FullscreenBackground image={backgroundImg} video={background.video}>
+      <FullscreenBackground image={backgroundImg} video={background.video} videoTitle={`Background video - Homepage - ${title}`}>
         <div className="highlighted-release">
           <div className="release-cover">
             <NavLink to={`/music/${slug}`}>
