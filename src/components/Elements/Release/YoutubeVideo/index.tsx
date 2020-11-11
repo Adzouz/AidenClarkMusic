@@ -1,9 +1,12 @@
+// Libraries
 import React from 'react';
 import { sendEvent } from '../../../../utils';
-import './index.scss';
-
 import { IMusicItemTab } from '../../../../types';
 
+// Styling
+import './index.scss';
+
+// Component properties
 interface IYoutubeVideoProps {
   cinemaMode: any;
   setCinemaMode: any;
@@ -11,27 +14,31 @@ interface IYoutubeVideoProps {
 }
 
 const YoutubeVideo = ({ cinemaMode, setCinemaMode, release }: IYoutubeVideoProps) => {
+  const { slug, title, youtube_video } = release;
   const toggleCinemaMode = () => {
-    const newValue = !cinemaMode[release.slug];
+    const newValue = !cinemaMode[slug];
     sendEvent({
       category: 'Release',
       action: 'Toggle cinema mode',
-      label: `${release.title} - ${newValue ? 'Enable' : 'Disable'}`
+      label: `${title} - ${newValue ? 'Enable' : 'Disable'}`
     });
-    setCinemaMode({...cinemaMode, [release.slug]: newValue });
+    setCinemaMode({...cinemaMode, [slug]: newValue });
   };
   return (
     <div className="youtube-video-container">
       <div className="youtube-video-wrapper">
         <div className="youtube-video">
-          <iframe src={release.youtube_video} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+          <iframe
+            src={youtube_video}
+            frameBorder="0"
+            allow="accelerometer; autoplay; fullscreen; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            title={`YouTube - Release - ${title}`}
+          />
         </div>
       </div>
       <div className="cinema-mode-trigger">
-        <button
-          onClick={() => toggleCinemaMode()}
-        >
-          {cinemaMode[release.slug] ? 'Disable' : 'Enable'} cinema mode
+        <button onClick={() => toggleCinemaMode()}>
+          {cinemaMode[slug] ? 'Disable' : 'Enable'} cinema mode
         </button>
       </div>
     </div>

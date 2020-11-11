@@ -1,12 +1,13 @@
  {
   "slug": "m-royal",
   "title": "M.ROYAL",
+  "full_title": "Aiden Clark - M.ROYAL",
   "type": "ep",
   "cover": "cover.png",
   "meta_description": "Listen to Aiden Clark's first EP: M.ROYAL. Available on all major streaming platforms.",
   "background": {
     "image": "bg.png",
-    "video": "https://player.vimeo.com/video/474459746?background=1&autoplay=1&loop=1&byline=0&title=0"
+    "video": "https://player.vimeo.com/video/474459746?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
   },
   "release_date": "May 5, 2020",
   "listen": {
@@ -51,7 +52,7 @@
     ]
   },
   "buy": {
-    "description": "You also can buy it to support him!<br />(even if he doesn't deserve it)",
+    "description": "You can also buy it to support him!<br />(even if he doesn't deserve it 😈)",
     "links": [
       {
         "title": "Bandcamp",
