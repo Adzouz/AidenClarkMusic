@@ -100,7 +100,7 @@
         position: relative;
         transition: .12s all ease-in-out;
 
-        &::before {
+        &:not(.logo)::before {
           content: attr(title);
           position: absolute;
           left: 50%;

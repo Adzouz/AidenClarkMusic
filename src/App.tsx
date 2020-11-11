@@ -16,6 +16,7 @@ import Music from './components/Pages/Music';
 
 const history = createBrowserHistory();
 
+// Send the event every time the route change
 history.listen(location => {
   if (process.env.NODE_ENV === "production") {
     ReactGA.set({ page: location.pathname });
@@ -25,6 +26,7 @@ history.listen(location => {
 
 const App = () => {
   useEffect(() => {
+    // Send event at init
     if (process.env.NODE_ENV === "production") {
       ReactGA.set({ page: window.location.pathname });
       ReactGA.pageview(window.location.pathname);
