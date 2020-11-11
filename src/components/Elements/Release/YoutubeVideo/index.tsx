@@ -1,9 +1,12 @@
+// Libraries
 import React from 'react';
 import { sendEvent } from '../../../../utils';
-import './index.scss';
-
 import { IMusicItemTab } from '../../../../types';
 
+// Styling
+import './index.scss';
+
+// Component properties
 interface IYoutubeVideoProps {
   cinemaMode: any;
   setCinemaMode: any;
@@ -25,13 +28,16 @@ const YoutubeVideo = ({ cinemaMode, setCinemaMode, release }: IYoutubeVideoProps
     <div className="youtube-video-container">
       <div className="youtube-video-wrapper">
         <div className="youtube-video">
-          <iframe src={youtube_video} frameBorder="0" allow="accelerometer; autoplay; fullscreen; clipboard-write; encrypted-media; gyroscope; picture-in-picture" title={`YouTube - Release - ${title}`} />
+          <iframe
+            src={youtube_video}
+            frameBorder="0"
+            allow="accelerometer; autoplay; fullscreen; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            title={`YouTube - Release - ${title}`}
+          />
         </div>
       </div>
       <div className="cinema-mode-trigger">
-        <button
-          onClick={() => toggleCinemaMode()}
-        >
+        <button onClick={() => toggleCinemaMode()}>
           {cinemaMode[slug] ? 'Disable' : 'Enable'} cinema mode
         </button>
       </div>
