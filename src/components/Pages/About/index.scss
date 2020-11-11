@@ -37,37 +37,6 @@
     position: relative;
     z-index: 2;
   }
-  .description {
-    ul.photos {
-      list-style: none;
-      padding: 1.5rem 0 0;
-      max-width: 30rem;
-      margin: 0 auto;
-
-      @include minDevice($minTablet) {
-        display: flex;
-        max-width: 100rem;
-      }
-      li {
-        padding: 1rem;
-        flex: 0 0 33.333%;
-
-        @include minDevice($minTablet) {
-          padding: 2rem;
-        }
-        &:hover {
-          img {
-            transform: scale(1.02);
-          }
-        }
-        img {
-          display: block;
-          width: 100%;
-          transition: .2s all ease-in-out;
-        }
-      }
-    }
-  }
   .social {
     p {
       margin: 3rem 0 2rem;

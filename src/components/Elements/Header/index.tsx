@@ -1,10 +1,13 @@
+// Libraries
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import ReactGA from 'react-ga';
 import { sendEvent } from '../../../utils';
+
+// Styling
 import './index.scss';
 
-import { aboutPage, homePage, musicPage } from '../../../data';
+// Data
+import { config, aboutPage, homePage, musicPage } from '../../../data';
 
 const Header = () => {
   const logoPath = require('../../../assets/logo.svg');
@@ -19,11 +22,11 @@ const Header = () => {
           <NavLink
             to="/about"
             activeClassName="active"
-            title="About"
+            title={aboutPage.title}
             onClick={() => sendEvent({
               category: 'Header',
               action: 'Navigation click',
-              label: 'About'
+              label: aboutPage.title
             })}
           >
             {aboutPage.title}
@@ -34,18 +37,19 @@ const Header = () => {
             to="/"
             activeClassName="active"
             className="logo"
+            title={homePage.title}
             onClick={() => sendEvent({
               category: 'Header',
               action: 'Navigation click',
-              label: 'Home'
+              label: homePage.title
             })}
           >
             <span className="assistive-text">
               {homePage.title}
             </span>
             <img
-              src={logoPath}
-              alt="Aiden Clark Logo"
+              src={logoPath.default}
+              alt={`${config.title} Logo`}
             />
           </NavLink>
         </li>
@@ -53,11 +57,11 @@ const Header = () => {
           <NavLink
             to="/music"
             activeClassName="active"
-            title="Music"
+            title={musicPage.title}
             onClick={() => sendEvent({
               category: 'Header',
               action: 'Navigation click',
-              label: 'Music'
+              label: musicPage.title
             })}
           >
             {musicPage.title}

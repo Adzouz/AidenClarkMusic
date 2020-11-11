@@ -17,14 +17,16 @@
   }
   &::before {
     content: "";
-    width: 500px;
-    height: 500px;
+    width: 60rem;
+    height: 50rem;
+    border-radius: 30rem;
     position: absolute;
-    bottom: 12rem;
+    bottom: 10rem;
     left: 0;
     transform: translateX(-50%);
     animation: 5s infinite alternate ease-in-out glow;
     display: none;
+    opacity: 0.8;
 
     @include minDevice($minLargeTablet) {
       display: block;
@@ -98,7 +100,7 @@
         position: relative;
         transition: .12s all ease-in-out;
 
-        &::before {
+        &:not(.logo)::before {
           content: attr(title);
           position: absolute;
           left: 50%;

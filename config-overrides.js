@@ -4,21 +4,27 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const getHtmlWebpackPluginConfig = require('./config/htmlPluginConfig');
 const path = require('path');
 
+// List of pages to generate in the build
+const routesToGenerate = ['/', '/about', '/music', '/music/m-royal', '/music/keep-control'];
+
 module.exports = (config, env) => {
   config.output.filename = 'app.js';
 
-  // Override HtmlWebpackPlugin config for Dev & Prod
   const HtmlWebpackPluginIndex = config.plugins.findIndex(
     plugin => plugin instanceof HtmlWebpackPlugin
   );
 
   config.plugins.splice(HtmlWebpackPluginIndex, 1);
-  const htmlPlugins = generateHTMLPlugins(env);
+  const htmlPlugins = [new HtmlWebpackPlugin(getHtmlWebpackPluginConfig(env))];
   config.plugins = htmlPlugins.concat(config.plugins);
 
   if (env === 'production') {
-    const prerenderSPAPlugins = generatePrerenderSPAPlugins();
-    config.plugins = config.plugins.concat(prerenderSPAPlugins);
+    const optionsPrerender = {
+      routes: routesToGenerate,
+      staticDir: path.join(__dirname, 'build'),
+    };
+
+    config.plugins = config.plugins.concat([new PrerenderSPAPlugin(optionsPrerender)]);
 
     config.optimization.runtimeChunk = false;
     config.optimization.splitChunks = {
@@ -38,16 +44,3 @@ module.exports = (config, env) => {
 
   return config;
 };
-
-function generateHTMLPlugins(env) {
-  return [new HtmlWebpackPlugin(getHtmlWebpackPluginConfig(env))];
-}
-
-function generatePrerenderSPAPlugins() {
-  const options = {
-    routes: ['/', '/about', '/music', '/music/m-royal', '/music/keep-control'],
-    staticDir: path.join(__dirname, 'build'),
-  };
-
-  return [new PrerenderSPAPlugin(options)];
-}

@@ -1,7 +1,12 @@
+// Libraries
 import React from 'react';
 import { ILink } from '../../../types';
 import { sendEvent } from '../../../utils';
 
+// Styling
+import './index.scss';
+
+// Component properties
 interface ISocialLinksProps {
   links: ILink[],
   from: string
@@ -24,7 +29,10 @@ const SocialLinks = ({ links, from }: ISocialLinksProps) => {
             label: from
           })}
         >
-          <img src={logoPath} alt={link.title} />
+          <img
+            src={logoPath.default}
+            alt={link.title}
+          />
         </a>
       </li>
     );
