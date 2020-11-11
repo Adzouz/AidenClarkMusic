@@ -1,6 +1,8 @@
+// Libraries
 import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 
+// Component properties
 interface IScrollToTopProps {
   history: any;
 }
@@ -13,9 +15,9 @@ const ScrollToTop = ({ history }: IScrollToTopProps) => {
     return () => {
       unlisten();
     }
-  }, []);
+  }, [history]);
 
   return <React.Fragment />;
-}
+};
 
 export default withRouter(ScrollToTop);

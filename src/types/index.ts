@@ -1,7 +1,8 @@
 export interface IMusicItemTab {
   slug?: string;
   title?: string;
-  fulltitle?: string;
+  full_title?: string;
+  meta_description?: string;
   type?: string;
   cover?: string;
   background?: {
