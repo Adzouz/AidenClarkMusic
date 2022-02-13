@@ -1,0 +1,10 @@
+{
+    "buildDirectory": "./build",
+    "routes": [
+        "/",
+        "/about",
+        "/music",
+        "/music/m-royal",
+        "/music/keep-control"
+    ]
+  }

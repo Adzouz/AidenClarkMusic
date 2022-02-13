@@ -41,7 +41,7 @@ const HomePage = () => {
   return (
     <div className="home">
       <FullscreenBackground
-        image={backgroundImg.default}
+        image={backgroundImg}
         video={background.video}
         videoTitle={`Background video - Homepage - ${title}`}
       >

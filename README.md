@@ -1,9 +1,9 @@
 # 🎹 Aiden Clark - Website
 
-Website for the music artist Aiden Clark (Montréal, CA). Created to share all past and upcoming song releases.
+Website for the music artist Aiden Clark (Montréal, CAN). Created to share all past and upcoming song releases.
 Made with React.
 
-(Tested with Node 10.23.0)
+(Tested with Node 16.14.0)
 
 - [x] ⛏ SSR support
 
@@ -24,4 +24,4 @@ npm run start
 npm run build
 ```
 
-(the list of the pages to generate is stored in the config-overrides.js file)
+(the list of the pages to generate is stored in the .rsp.json file)
