@@ -8,10 +8,8 @@ ReactGA.initialize('UA-181884461-1');
 
 const root = document.getElementById('root');
 
-const Application = () => (<App />);
-
-if (process.env.NODE_ENV === 'development') {
-  ReactDOM.render(<Application />, root);
+if (root.hasChildNodes()) {
+  ReactDOM.hydrate(<App />, root);
 } else {
-  ReactDOM.hydrate(<Application />, root);
+  ReactDOM.render(<App />, root);
 }

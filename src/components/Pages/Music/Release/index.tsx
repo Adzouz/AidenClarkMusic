@@ -70,13 +70,13 @@ const ReleasePage = ({ setReleaseId }: IReleasePageProps) => {
   return (
     <div className={`release-item${cinemaMode[releaseId] ? ' cinema' : ''}`}>
       <FullscreenBackground
-        image={backgroundImg.default}
+        image={backgroundImg}
         video={background.video}
         videoTitle={`Background video - Release - ${title}`}
       >
         <div className="title">
           <img
-            src={titleImg.default}
+            src={titleImg}
             alt={title}
           />
         </div>
@@ -108,7 +108,7 @@ const ReleasePage = ({ setReleaseId }: IReleasePageProps) => {
         <AdditionalInfo release={currentItem} />
         <div className="logo">
           <img
-            src={artistLogoImg.default}
+            src={artistLogoImg}
             alt="Artist(s) Logo(s)"
           />
         </div>

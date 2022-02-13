@@ -14,7 +14,7 @@ const AboutPhotos = () => {
   const photosList = photosPath.map((imagePath: any, index: number) => (
     <li key={`photo_${index}`}>
       <img
-        src={imagePath.default}
+        src={imagePath}
         alt={`A handsome guy #${index + 1}`}
         title={`A handsome guy #${index + 1}`}
       />

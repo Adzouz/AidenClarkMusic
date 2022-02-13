@@ -33,7 +33,7 @@ const HighlightedRelease = ({ release }: IHighlightedRelease) => {
             {full_title}
           </span>
           <img
-            src={coverImg.default}
+            src={coverImg}
             alt={title}
           />
         </NavLink>
@@ -45,7 +45,7 @@ const HighlightedRelease = ({ release }: IHighlightedRelease) => {
               {title}
             </span>
             <img
-              src={titleImg.default}
+              src={titleImg}
               alt=""
             />
           </h1>

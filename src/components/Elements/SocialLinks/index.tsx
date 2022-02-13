@@ -30,7 +30,7 @@ const SocialLinks = ({ links, from }: ISocialLinksProps) => {
           })}
         >
           <img
-            src={logoPath.default}
+            src={logoPath}
             alt={link.title}
           />
         </a>

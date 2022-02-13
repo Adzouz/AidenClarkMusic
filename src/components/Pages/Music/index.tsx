@@ -44,7 +44,7 @@ const MusicPage = () => {
         >
           <span className="release-cover">
             <img
-              src={coverImg.default}
+              src={coverImg}
               alt={item.title}
             />
           </span>
