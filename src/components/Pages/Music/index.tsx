@@ -30,7 +30,7 @@ const MusicPage = () => {
   }, [location]);
 
   const linksList = releases.map((item: IMusicItemTab, index: number) => {
-    const coverImg = require(`../../../assets/releases/${item.slug}/${item.cover}`);
+    const coverImg = require(`../../../assets/releases/${item.id}/${item.cover}`);
     return (
       <li key={`music_${index}`}>
         <NavLink

@@ -16,13 +16,23 @@
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>https://aidenclarkmusic.com/about/</loc>
+  <lastmod>2020-11-08T18:58:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://aidenclarkmusic.com/music/m-royal/</loc>
   <lastmod>2020-11-08T18:58:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://aidenclarkmusic.com/music/keep-control/</loc>
-  <lastmod>2020-11-08T18:58:35+00:00</lastmod>
+  <loc>https://aidenclarkmusic.com/music/dedhomiz-keep-control-remix/</loc>
+  <lastmod>2022-03-03T18:42:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://aidenclarkmusic.com/music/we-are-magonia-synthwave-is-dead-remix/</loc>
+  <lastmod>2022-03-03T18:42:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 

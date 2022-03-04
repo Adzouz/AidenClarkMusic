@@ -1,10 +1,12 @@
 export interface IMusicItemTab {
+  id: string;
   slug?: string;
   title?: string;
   full_title?: string;
   meta_description?: string;
   type?: string;
   cover?: string;
+  logo?: string;
   background?: {
     image?: string;
     video?: string;

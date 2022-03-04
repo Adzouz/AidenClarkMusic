@@ -1,0 +1,44 @@
+{
+    "id": "synthwave-is-dead",
+    "slug": "we-are-magonia-synthwave-is-dead-remix",
+    "title": "We Are Magonia - Synthwave Is Dead (Aiden Clark Remix)",
+    "full_title": "We Are Magonia - Synthwave Is Dead (Aiden Clark Remix)",
+    "type": "remix",
+    "cover": "cover.jpg",
+    "meta_description": "Listen to Aiden Clark's new remix: Synthwave Is Dead. Original song by We Are Magonia.",
+    "background": {
+      "image": "bg.jpg",
+      "video": "https://player.vimeo.com/video/684430723?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1"
+    },
+    "release_date": "February 26, 2022",
+    "listen": {
+      "description": "We Are Magonia - Synthwave Is Dead remixed by Aiden Clark is available on the following streaming platforms",
+      "links": [
+        {
+          "title": "YouTube",
+          "url": "https://www.youtube.com/watch?v=H3mnl8-Uh20"
+        },
+        {
+          "title": "SoundCloud",
+          "url": "https://soundcloud.com/aidenclark/we-are-magonia-synthwave-is-dead-remix"
+        },
+        {
+          "title": "Audius",
+          "url": "https://audius.co/AidenClarkMusic/we-are-magonia-synthwave-is-dead-aiden-clark-remix"
+        }
+      ]
+    },
+    "youtube_video": "https://www.youtube.com/embed/H3mnl8-Uh20",
+    "buy": null,
+    "credits": [
+      {
+        "title": "Original song by",
+        "description": "<img src=\"https://box.alaqasar.com/wam-logo.png\" alt=\"We Are Magonia Logo\" /><br /><br /><div class=\"youtube-video-container\"><div class=\"youtube-video-wrapper\"><div class=\"youtube-video\"><iframe src=\"https://www.youtube.com/embed/g9X9AXXpg1c\" frameborder=\"0\" allow=\"accelerometer; autoplay; fullscreen; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" title=\"YouTube - We Are Magonia - The Living Will Envy The Dead (Full Album)\" /></div></div></div>"
+      },
+      {
+        "title": "From their second album",
+        "description": "The Living Will Envy The Dead"
+      }
+    ]
+  }
+  
