@@ -1,9 +1,11 @@
 {
-  "slug": "keep-control",
-  "title": "Keep Control (Aiden Clark Remix)",
+  "id": "keep-control",
+  "slug": "dedhomiz-keep-control-remix",
+  "title": "Dedhomiz - Keep Control (Aiden Clark Remix)",
   "full_title": "Dedhomiz - Keep Control (Aiden Clark Remix)",
   "type": "remix",
   "cover": "cover.jpg",
+  "logo": "logo.png",
   "meta_description": "Listen to Aiden Clark's first remix: Keep Control. Original song by Dedhomiz.",
   "background": {
     "image": "bg.jpg",

@@ -23,5 +23,3 @@ npm run start
 ```
 npm run build
 ```
-
-(the list of the pages to generate is stored in the .rsp.json file)

@@ -27,7 +27,7 @@ const ReleasePage = ({ setReleaseId }: IReleasePageProps) => {
   const location = useLocation();
   const releaseFound = releases.filter((item: IMusicItemTab) => item.slug === releaseId);
 
-  const currentItem = releaseFound.length === 1 ? releaseFound[0] : null;
+  const currentItem: IMusicItemTab = releaseFound.length === 1 ? releaseFound[0] : null;
 
   useEffect(() => {
     const metas = {
@@ -57,15 +57,17 @@ const ReleasePage = ({ setReleaseId }: IReleasePageProps) => {
   }
 
   const {
+    id,
     background,
     buy,
     listen,
+    logo,
     title
   } = currentItem;
 
-  const backgroundImg = require(`../../../../assets/releases/${releaseId}/${background.image}`);
-  const titleImg = require(`../../../../assets/releases/${releaseId}/title.png`);
-  const artistLogoImg = require(`../../../../assets/releases/${releaseId}/logo.png`);
+  const backgroundImg = require(`../../../../assets/releases/${id}/${background.image}`);
+  const titleImg = require(`../../../../assets/releases/${id}/title.png`);
+  const artistLogoImg = logo && require(`../../../../assets/releases/${id}/logo.png`);
 
   return (
     <div className={`release-item${cinemaMode[releaseId] ? ' cinema' : ''}`}>
@@ -90,15 +92,17 @@ const ReleasePage = ({ setReleaseId }: IReleasePageProps) => {
               />
             )}
           </div>
-          <div className="buy">
-            <p dangerouslySetInnerHTML={{ __html: buy.description }} />
-            {buy.links && (
-              <SocialLinks
-                links={buy.links}
-                from={`${title} - Buy`}
-              />
-            )}
-          </div>
+          {buy && buy.links && buy.description &&
+            <div className="buy">
+              <p dangerouslySetInnerHTML={{ __html: buy.description }} />
+              {buy.links && (
+                <SocialLinks
+                  links={buy.links}
+                  from={`${title} - Buy`}
+                />
+              )}
+            </div>
+          }
         </div>
         <YoutubeVideo
           cinemaMode={cinemaMode}
@@ -106,12 +110,14 @@ const ReleasePage = ({ setReleaseId }: IReleasePageProps) => {
           release={currentItem}
         />
         <AdditionalInfo release={currentItem} />
-        <div className="logo">
-          <img
-            src={artistLogoImg}
-            alt="Artist(s) Logo(s)"
-          />
-        </div>
+        {artistLogoImg &&
+          <div className="logo">
+            <img
+              src={artistLogoImg}
+              alt="Artist(s) Logo(s)"
+            />
+          </div>
+        }
       </FullscreenBackground>
     </div>
   );
