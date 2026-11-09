@@ -38,7 +38,7 @@ const YoutubeVideo = ({ cinemaMode, setCinemaMode, release }: IYoutubeVideoProps
       </div>
       <div className="cinema-mode-trigger">
         <button onClick={() => toggleCinemaMode()}>
-          {cinemaMode[slug] ? 'Disable' : 'Enable'} cinema mode
+          {`${cinemaMode[slug] ? 'Disable' : 'Enable'} cinema mode`}
         </button>
       </div>
     </div>

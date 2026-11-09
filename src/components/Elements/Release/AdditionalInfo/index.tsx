@@ -19,7 +19,8 @@ const AdditionalInfo = ({ release }: IAdditionalInfoProps) => {
         className="title"
         dangerouslySetInnerHTML={{ __html: creditsItem.title }}
       />
-      <p dangerouslySetInnerHTML={{ __html: creditsItem.description }} />
+      {/* div, not p: descriptions may embed block elements (video iframes) */}
+      <div className="paragraph" dangerouslySetInnerHTML={{ __html: creditsItem.description }} />
     </React.Fragment>
   ));
 

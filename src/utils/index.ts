@@ -1,4 +1,4 @@
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import { config } from '../data';
 
 interface IUpdateMetasProps {
@@ -8,6 +8,23 @@ interface IUpdateMetasProps {
 }
 
 const baseSiteURL = 'https://aidenclarkmusic.com';
+
+const gaMeasurementId = import.meta.env.VITE_GA_MEASUREMENT_ID;
+// Skip analytics in dev, without an ID, and while react-snap prerenders pages
+const analyticsEnabled = import.meta.env.PROD && !!gaMeasurementId && navigator.userAgent !== 'ReactSnap';
+
+export const initAnalytics = () => {
+  if (analyticsEnabled) {
+    // Page views are sent manually on each route change
+    ReactGA.initialize(gaMeasurementId, { gtagOptions: { send_page_view: false } });
+  }
+};
+
+export const sendPageview = (page: string) => {
+  if (analyticsEnabled) {
+    ReactGA.send({ hitType: 'pageview', page });
+  }
+};
 
 export const updateMetas = ({ title, description, path }: IUpdateMetasProps) => {
   const pathParts = path.split('/');
@@ -29,7 +46,7 @@ interface ISendEventProps {
 }
 
 export const sendEvent = ({ category, action, label }: ISendEventProps) => {
-  if (process.env.NODE_ENV === 'production') {
+  if (analyticsEnabled) {
     ReactGA.event({
       category,
       action,

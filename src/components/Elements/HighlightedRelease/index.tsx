@@ -1,7 +1,8 @@
 // Libraries
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router';
 import { sendEvent } from '../../../utils';
+import { assetUrl } from '../../../utils/assets';
 import { IMusicItemTab } from '../../../types';
 
 // Styling
@@ -22,8 +23,8 @@ const HighlightedRelease = ({ release }: IHighlightedRelease) => {
     title
   } = release;
 
-  const titleImg = require(`../../../assets/releases/${slug}/title.png`);
-  const coverImg = require(`../../../assets/releases/${slug}/${cover}`);
+  const titleImg = assetUrl(`releases/${slug}/title.png`);
+  const coverImg = assetUrl(`releases/${slug}/${cover}`);
 
   return (
     <div className="highlighted-release">
@@ -66,7 +67,7 @@ const HighlightedRelease = ({ release }: IHighlightedRelease) => {
                 label: 'More info'
               })}
             >
-              More info<span className="assistive-text"> about {title}</span>
+              More info<span className="assistive-text">{` about ${title}`}</span>
             </NavLink>
             <NavLink
               to={`/music`}

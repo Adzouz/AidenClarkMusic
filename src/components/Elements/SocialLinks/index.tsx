@@ -2,6 +2,7 @@
 import React from 'react';
 import { ILink } from '../../../types';
 import { sendEvent } from '../../../utils';
+import { assetUrl } from '../../../utils/assets';
 
 // Styling
 import './index.scss';
@@ -16,7 +17,7 @@ const SocialLinks = ({ links, from }: ISocialLinksProps) => {
   const fromSlug = from.toLowerCase().replace(/[ .()]/g, '').replace(/-/g, '_');
   const linksList = links.map((link: ILink, index: number) => {
     const linkSlug = link.title.toLowerCase().replace(/ /g, "-");
-    const logoPath = require(`../../../assets/logos/${linkSlug}.svg`);
+    const logoPath = assetUrl(`logos/${linkSlug}.svg`);
     return (
       <li key={`social_link_${fromSlug}_${index}`}>
         <a

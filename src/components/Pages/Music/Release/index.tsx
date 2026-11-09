@@ -1,8 +1,9 @@
 // Libraries
 import React, { useEffect, useState } from 'react';
-import { useParams, useLocation, Redirect } from 'react-router-dom';
+import { useParams, useLocation, Navigate } from 'react-router';
 import { IMusicItemTab } from '../../../../types';
 import { updateMetas } from '../../../../utils';
+import { assetUrl } from '../../../../utils/assets';
 
 // Styling
 import './index.scss';
@@ -16,12 +17,7 @@ import FullscreenBackground from '../../../Elements/FullscreenBackground';
 import SocialLinks from '../../../Elements/SocialLinks';
 import YoutubeVideo from '../../../Elements/Release/YoutubeVideo';
 
-// Component properties
-interface IReleasePageProps {
-  setReleaseId: any;
-}
-
-const ReleasePage = ({ setReleaseId }: IReleasePageProps) => {
+const ReleasePage = () => {
   const [cinemaMode, setCinemaMode] = useState<any>({});
   const { releaseId } = useParams();
   const location = useLocation();
@@ -38,22 +34,15 @@ const ReleasePage = ({ setReleaseId }: IReleasePageProps) => {
 
     setCinemaMode({});
     updateMetas(metas);
-    setReleaseId(releaseId);
-
-    return () => {
-      setReleaseId(null);
-    }
   }, [
     currentItem,
     location,
-    releaseId,
-    setCinemaMode,
-    setReleaseId
+    setCinemaMode
   ]);
 
   // If item not found redirect to home page
   if (!currentItem) {
-    return <Redirect to="/" />;
+    return <Navigate to="/" replace />;
   }
 
   const {
@@ -65,9 +54,9 @@ const ReleasePage = ({ setReleaseId }: IReleasePageProps) => {
     title
   } = currentItem;
 
-  const backgroundImg = require(`../../../../assets/releases/${id}/${background.image}`);
-  const titleImg = require(`../../../../assets/releases/${id}/title.png`);
-  const artistLogoImg = logo && require(`../../../../assets/releases/${id}/logo.png`);
+  const backgroundImg = assetUrl(`releases/${id}/${background.image}`);
+  const titleImg = assetUrl(`releases/${id}/title.png`);
+  const artistLogoImg = logo && assetUrl(`releases/${id}/logo.png`);
 
   return (
     <div className={`release-item${cinemaMode[releaseId] ? ' cinema' : ''}`}>

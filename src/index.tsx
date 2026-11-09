@@ -1,15 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import ReactGA from 'react-ga';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import App from './App';
+import { initAnalytics } from './utils';
 import './styles/index.scss';
 
-ReactGA.initialize('UA-181884461-1');
+initAnalytics();
 
 const root = document.getElementById('root');
 
+// Pages prerendered by react-snap already contain markup to hydrate
 if (root.hasChildNodes()) {
-  ReactDOM.hydrate(<App />, root);
+  hydrateRoot(root, <App />);
 } else {
-  ReactDOM.render(<App />, root);
+  createRoot(root).render(<App />);
 }

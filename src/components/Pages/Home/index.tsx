@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
+import { useLocation, Navigate } from 'react-router';
 import { updateMetas } from '../../../utils';
+import { assetUrl } from '../../../utils/assets';
 import { IMusicItemTab } from '../../../types';
 
 // Data
@@ -27,7 +27,7 @@ const HomePage = () => {
   const releaseId = homePage.highlighted_release;
   const releaseFound = releases.filter((item: IMusicItemTab) => item.slug === releaseId);
   if (releaseFound.length !== 1) {
-    return <Redirect to="/about" />
+    return <Navigate to="/about" replace />
   }
 
   const highlightedRelease = releaseFound[0];
@@ -36,7 +36,7 @@ const HomePage = () => {
     title
   } = highlightedRelease;
 
-  const backgroundImg = require(`../../../assets/releases/${releaseId}/${background.image}`);
+  const backgroundImg = assetUrl(`releases/${releaseId}/${background.image}`);
 
   return (
     <div className="home">

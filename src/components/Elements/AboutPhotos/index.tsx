@@ -4,14 +4,15 @@ import React from 'react';
 // Styling
 import './index.scss';
 
-const AboutPhotos = () => {
-  const photosPath = [
-    require('../../../assets/photos/1.jpg'),
-    require('../../../assets/photos/2.jpg'),
-    require('../../../assets/photos/3.jpg')
-  ];
+// Assets
+import photo1 from '../../../assets/photos/1.jpg';
+import photo2 from '../../../assets/photos/2.jpg';
+import photo3 from '../../../assets/photos/3.jpg';
 
-  const photosList = photosPath.map((imagePath: any, index: number) => (
+const AboutPhotos = () => {
+  const photosPath = [photo1, photo2, photo3];
+
+  const photosList = photosPath.map((imagePath: string, index: number) => (
     <li key={`photo_${index}`}>
       <img
         src={imagePath}

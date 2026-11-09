@@ -30,7 +30,7 @@
     ]
   },
   "buy": {
-    "description": "You can also grab your copy<br />(for free or name your price)",
+    "description": "You can also grab your copy<br>(for free or name your price)",
     "links": [
       {
         "title": "Bandcamp",
@@ -42,7 +42,7 @@
   "credits": [
     {
       "title": "Original song by",
-      "description": "Dedhomiz<br /><br /><div class=\"youtube-video-container\"><div class=\"youtube-video-wrapper\"><div class=\"youtube-video\"><iframe src=\"https://www.youtube.com/embed/QD-aAjYOHkI\" frameborder=\"0\" allow=\"accelerometer; autoplay; fullscreen; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" title=\"YouTube - Dedhomiz - Keep Control (Music Audio)\" /></div></div></div>"
+      "description": "Dedhomiz<br><br><div class=\"youtube-video-container\"><div class=\"youtube-video-wrapper\"><div class=\"youtube-video\"><iframe src=\"https://www.youtube.com/embed/QD-aAjYOHkI\" frameborder=\"0\" allow=\"accelerometer; autoplay; fullscreen; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" title=\"YouTube - Dedhomiz - Keep Control (Music Audio)\"></iframe></div></div></div>"
     },
     {
       "title": "Remixed by",

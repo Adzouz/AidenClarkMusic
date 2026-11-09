@@ -1,5 +1,5 @@
-@import '../../../styles/variables';
-@import '../../../styles/mixins';
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
 
 ul.links {
   list-style: none;
@@ -20,13 +20,13 @@ ul.links {
         padding: 1rem 2rem;
       }
       img {
-        transition: .2s all ease-in-out;
+        transition: 0.2s all ease-in-out;
         display: block;
         width: 100%;
-        max-width: 120px;
+        width: 12rem;
 
         @include minDevice($minTablet) {
-          max-width: 150px;
+          width: 15rem;
         }
       }
       &:hover {

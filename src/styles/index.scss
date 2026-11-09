@@ -1,6 +1,4 @@
-@import './variables';
-@import './mixins';
-@import './fonts';
-@import './global';
-@import './buttons';
-@import './text';
+@use './fonts';
+@use './global';
+@use './buttons';
+@use './text';

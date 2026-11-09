@@ -54,7 +54,7 @@
     ]
   },
   "buy": {
-    "description": "You can also buy it to support him!<br />(even if he doesn't deserve it 😈)",
+    "description": "You can also buy it to support him!<br>(even if he doesn't deserve it 😈)",
     "links": [
       {
         "title": "Bandcamp",
@@ -82,7 +82,7 @@
     },
     {
       "title": "With the kind participation of:",
-      "description": "Maraudeur<br />SeYSMIC<br />She Died in a Parking Lot<br />Sam Hampell (YUL saxophone)"
+      "description": "Maraudeur<br>SeYSMIC<br>She Died in a Parking Lot<br>Sam Hampell (YUL saxophone)"
     }
   ]
 }

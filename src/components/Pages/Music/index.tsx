@@ -1,8 +1,9 @@
 // Libraries
-import React, { useEffect, useState } from 'react';
-import { NavLink, Switch, Route, useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { NavLink, Routes, Route, useLocation, useMatch } from 'react-router';
 import { IMusicItemTab } from '../../../types';
 import { updateMetas, sendEvent } from '../../../utils';
+import { assetUrl } from '../../../utils/assets';
 
 // Styling
 import './index.scss';
@@ -15,7 +16,8 @@ import Release from './Release';
 
 const MusicPage = () => {
   const location = useLocation();
-  const [releaseId, setReleaseId] = useState(null);
+  // Derived from the URL so the prerendered markup matches the first client render
+  const releaseId = useMatch('/music/:releaseId')?.params.releaseId;
 
   useEffect(() => {
     const metas = {
@@ -24,18 +26,17 @@ const MusicPage = () => {
       path: location.pathname
     };
 
-    if (location.pathname === '/music') {
+    if (!releaseId) {
       updateMetas(metas);
     }
-  }, [location]);
+  }, [location, releaseId]);
 
   const linksList = releases.map((item: IMusicItemTab, index: number) => {
-    const coverImg = require(`../../../assets/releases/${item.id}/${item.cover}`);
+    const coverImg = assetUrl(`releases/${item.id}/${item.cover}`);
     return (
       <li key={`music_${index}`}>
         <NavLink
           to={`/music/${item.slug}`}
-          activeClassName={'active'}
           onClick={() => sendEvent({
             category: `Music${releaseId ? ' shrinked' : ''}`,
             action: 'Release click',
@@ -70,11 +71,9 @@ const MusicPage = () => {
           {linksList}
         </ul>
       </div>
-      <Switch>
-        <Route path={`/music/:releaseId`}>
-          <Release setReleaseId={setReleaseId} />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route path=":releaseId" element={<Release />} />
+      </Routes>
     </div>
   );
 };
